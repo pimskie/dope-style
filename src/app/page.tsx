@@ -1,6 +1,5 @@
 import type { Category } from "@/types/Category";
-import CategoryCard from "./components/CategoryCard/CategoryCard";
-import CategoryList from "./components/CategoryList/CategoryList";
+import CategoryList from "@/components/CategoryList/CategoryList";
 
 type CategoryList = Array<Category>;
 
