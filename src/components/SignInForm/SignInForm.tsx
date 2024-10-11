@@ -25,9 +25,6 @@ const renderError = (
 ) => (showError ? <Error error={errorText} /> : null);
 
 const SignInForm = () => {
-  const searchParams = useSearchParams();
-  const [showError, setShowError] = useState(searchParams.has("error"));
-
   const [message, formHandler] = useFormState(handleForm, null);
 
   return (
