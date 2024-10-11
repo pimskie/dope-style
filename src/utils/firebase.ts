@@ -1,5 +1,10 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  signInWithRedirect,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import {
   getFirestore,
   doc,
@@ -14,7 +19,7 @@ import type { User } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIRESTORE_API_KEY,
-  authDomain: "dope-style-react.firebaseapp.com",
+  authDomain: process.env.NEXT_PUBLIC_FIRESTORE_AUTH_DOMAIN,
   projectId: "dope-style-react",
   storageBucket: "dope-style-react.appspot.com",
   messagingSenderId: "800841978158",
@@ -25,12 +30,9 @@ const app = initializeApp(firebaseConfig);
 
 const provider: GoogleAuthProvider = new GoogleAuthProvider();
 
-provider.setCustomParameters({
-  login_hint: "user@example.com",
-});
-
 const auth = getAuth();
 const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+const signInWithGoogleRedirect = () => signInWithRedirect(auth, provider);
 
 const database = getFirestore();
 
@@ -66,4 +68,9 @@ const createUserFromAuth = async (user: User): Promise<DocumentData> => {
   }
 };
 
-export { auth, signInWithGooglePopup, createUserFromAuth };
+export {
+  auth,
+  signInWithGooglePopup,
+  signInWithGoogleRedirect,
+  createUserFromAuth,
+};
