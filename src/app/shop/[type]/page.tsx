@@ -9,6 +9,7 @@ export async function generateMetadata({ params }: Props) {
     title: params.type,
   };
 }
+
 const Shop = ({ params }: Props) => {
   return (
     <div>
