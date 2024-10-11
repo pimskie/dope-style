@@ -9,7 +9,7 @@ import { useSearchParams } from "next/navigation";
 
 import VerticalStack from "@/components/Layout/Stack/VerticalStack";
 import Error from "@/components/Error/Error";
-import { useFormStatus } from "react-dom";
+import { useFormState } from "react-dom";
 import { useState } from "react";
 
 const signInWithPopup = async () => {
@@ -19,23 +19,21 @@ const signInWithPopup = async () => {
   await createUserFromAuth(user);
 };
 
-const renderError = (showError: boolean) =>
-  showError ? <Error error="Something went wrong" /> : null;
+const renderError = (
+  showError: boolean,
+  errorText: string = "Something went wrong"
+) => (showError ? <Error error={errorText} /> : null);
 
 const SignInForm = () => {
-  const { pending } = useFormStatus();
-
   const searchParams = useSearchParams();
   const [showError, setShowError] = useState(searchParams.has("error"));
 
-  const handleSigInForm = (formData: FormData) => {
-    handleForm(formData);
-  };
+  const [message, formHandler] = useFormState(handleForm, null);
 
   return (
     <div className="signup-form">
-      <form action={handleSigInForm}>
-        {renderError(showError)}
+      <form action={formHandler}>
+        {renderError(!!message, message)}
 
         <VerticalStack>
           <div className="form-field">

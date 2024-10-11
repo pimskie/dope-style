@@ -1,19 +1,37 @@
 "use server";
 
 import { signInWithGooglePopup, createUserFromAuth } from "@/utils/firebase";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-const handleForm = (data: FormData) => {
-  // return { error: "field was required" };
-  const values = Array.from(data.values());
+const handleForm = (previousState: any, data: FormData) => {
+  const requiredFields = [
+    "displayName",
+    "email",
+    "password",
+    "passwordConfirm",
+  ];
 
-  const hasEmpty = values.some((val) => !val);
+  try {
+    const requiredEntries = Array.from(data.entries()).filter(([key]) =>
+      requiredFields.includes(key)
+    );
 
-  if (hasEmpty) {
-    redirect("/sign-in?error");
+    const hasEmptyRequiredEntries = requiredEntries.some(
+      ([key, value]) => !value
+    );
+
+    console.log({ hasEmptyRequiredEntries });
+    if (hasEmptyRequiredEntries) {
+      throw Error("Empty values");
+    }
+  } catch (e: any) {
+    return e.toString();
   }
 
-  redirect("/sign-in/success");
+  const path = "/sign-in/success";
+  revalidatePath(path);
+  redirect(path);
 };
 
 export { handleForm };
