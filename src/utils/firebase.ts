@@ -12,9 +12,8 @@ import {
 
 import type { User } from "firebase/auth";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAYmVQzWNpfiJgYgDult3-VRpzEtSuVwKw",
+  apiKey: process.env.NEXT_PUBLIC_FIRESTORE_API_KEY,
   authDomain: "dope-style-react.firebaseapp.com",
   projectId: "dope-style-react",
   storageBucket: "dope-style-react.appspot.com",
