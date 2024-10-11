@@ -20,8 +20,24 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.form-field {
+  @apply flex;
+  @apply flex-col;
+  @apply gap-2;
+}
+
+.form-input {
+  @apply p-3;
+
+  background: var(--foreground);
+  color: var(--background);
+}
+
+.form-input[type="password"] {
+  @apply tracking-widest;
 }
