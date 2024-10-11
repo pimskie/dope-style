@@ -9,6 +9,8 @@ import { useSearchParams } from "next/navigation";
 
 import VerticalStack from "@/components/Layout/Stack/VerticalStack";
 import Error from "@/components/Error/Error";
+import { useFormStatus } from "react-dom";
+import { useState } from "react";
 
 const signInWithPopup = async () => {
   const response: UserCredential = await signInWithGooglePopup();
@@ -17,17 +19,23 @@ const signInWithPopup = async () => {
   await createUserFromAuth(user);
 };
 
-const renderError = (hasError: boolean) =>
-  hasError ? <Error error="Something went wrong" /> : null;
+const renderError = (showError: boolean) =>
+  showError ? <Error error="Something went wrong" /> : null;
 
 const SignInForm = () => {
+  const { pending } = useFormStatus();
+
   const searchParams = useSearchParams();
-  const hasError = searchParams.has("error");
+  const [showError, setShowError] = useState(searchParams.has("error"));
+
+  const handleSigInForm = (formData: FormData) => {
+    handleForm(formData);
+  };
 
   return (
     <div className="signup-form">
-      <form action={handleForm}>
-        {renderError(hasError)}
+      <form action={handleSigInForm}>
+        {renderError(showError)}
 
         <VerticalStack>
           <div className="form-field">
@@ -39,7 +47,6 @@ const SignInForm = () => {
               type="text"
               id="displayName"
               name="displayName"
-              required
             />
           </div>
 
@@ -53,7 +60,6 @@ const SignInForm = () => {
               id="email"
               name="email"
               defaultValue="pim.vandie@iodigital.com"
-              required
             />
           </div>
 
@@ -66,7 +72,6 @@ const SignInForm = () => {
               type="password"
               id="password"
               name="password"
-              required
             />
           </div>
 
@@ -79,7 +84,6 @@ const SignInForm = () => {
               type="password"
               id="passwordConfirm"
               name="passwordConfirm"
-              required
             />
           </div>
           <button type="submit">Create account</button>
