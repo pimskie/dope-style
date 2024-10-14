@@ -46,9 +46,13 @@ const SignInForm = () => {
     null
   );
 
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="signup-form">
-      <form action={formAction}>
+      <form action={formAction} onSubmit={onSubmit}>
         {renderError(!!errorObject, errorObject)}
 
         <VerticalStack>

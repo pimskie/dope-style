@@ -1,3 +1,9 @@
+export async function generateMetadata() {
+  return {
+    title: "Shop",
+  };
+}
+
 const Shop = () => {
   return (
     <div>
