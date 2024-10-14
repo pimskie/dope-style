@@ -8,34 +8,26 @@ import VerticalStack from "@/components/Layout/Stack/VerticalStack";
 import Error from "@/components/Error/Error";
 import { useFormState } from "react-dom";
 import { useState } from "react";
+import { ValidationStatus } from "@/types/ValidationStatus";
 
 const defaultFormFields = {
   displayName: "pimskie",
-  email: "pim.vandie@iodigital.com",
-  password: "",
-  confirmPassword: "",
+  email: `pim.vandie${performance.now()}@iodigital.com`,
+  password: "asdasd",
+  confirmPassword: "asdasd",
 };
 
-const renderError = (showError: boolean, errorJSON: string = "") => {
-  if (!showError) {
+const renderError = (error?: ValidationStatus, children?: React.ReactNode) => {
+  if (!error || !error.message) {
     return null;
   }
 
-  const errorObject = JSON.parse(errorJSON);
-
-  return (
-    <Error error="The following fields are invalid: ">
-      <ul>
-        {errorObject.map((fieldId: string) => (
-          <li key={fieldId}>{fieldId}</li>
-        ))}
-      </ul>
-    </Error>
-  );
+  return <Error error={error.message}>{children}</Error>;
 };
 
 const SignInForm = () => {
-  const [errorObject, formAction] = useFormState(handleForm, null);
+  const [serverActionError, formAction] = useFormState(handleForm, null);
+  const [clientSideError, setClientSideError] = useState<ValidationStatus>();
   const [formFields, setFormFields] = useState(defaultFormFields);
 
   const { displayName, email, password, confirmPassword } = formFields;
@@ -48,15 +40,19 @@ const SignInForm = () => {
     setFormFields({ ...formFields, [name]: value });
   };
 
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const response = await handleForm(null, formData);
+
+    setClientSideError(response);
   };
 
   return (
     <div className="signup-form">
       <form action={formAction} onSubmit={onSubmit}>
-        {renderError(!!errorObject, errorObject)}
-
+        {renderError(serverActionError || clientSideError)}
         <VerticalStack>
           <div className="form-field">
             <label htmlFor="displayName" className="form-label">
@@ -97,6 +93,7 @@ const SignInForm = () => {
               type="password"
               id="password"
               name="password"
+              value={password}
               required
               onChange={onFieldChanged}
             />
@@ -111,6 +108,7 @@ const SignInForm = () => {
               type="password"
               id="confirmPassword"
               name="confirmPassword"
+              value={confirmPassword}
               required
               onChange={onFieldChanged}
             />

@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
+  createUserWithEmailAndPassword,
   signInWithPopup,
   signInWithRedirect,
   GoogleAuthProvider,
@@ -44,6 +45,10 @@ const getUserSnapshot = async (user: User) => {
 };
 
 const createUserFromAuth = async (user: User): Promise<DocumentData> => {
+  if (!user) {
+    throw Error("No user was supplied for `createUserFromAuth`");
+  }
+
   const { reference, snapshot } = await getUserSnapshot(user);
 
   if (snapshot.exists()) {
@@ -68,9 +73,20 @@ const createUserFromAuth = async (user: User): Promise<DocumentData> => {
   }
 };
 
+const createAuthUserWithEmailAndPassword = async (
+  email: string,
+  password: string
+) => {
+  if (!email || !password) {
+    throw Error("Missing email or password");
+  }
+  return await createUserWithEmailAndPassword(auth, email, password);
+};
+
 export {
   auth,
   signInWithGooglePopup,
   signInWithGoogleRedirect,
   createUserFromAuth,
+  createAuthUserWithEmailAndPassword,
 };
