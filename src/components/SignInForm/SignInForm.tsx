@@ -5,7 +5,6 @@
 import { handleForm } from "@/utils/handle-form";
 import { signInWithGooglePopup, createUserFromAuth } from "@/utils/firebase";
 import type { UserCredential } from "firebase/auth";
-import { useSearchParams } from "next/navigation";
 
 import VerticalStack from "@/components/Layout/Stack/VerticalStack";
 import Error from "@/components/Error/Error";
@@ -19,18 +18,38 @@ const signInWithPopup = async () => {
   await createUserFromAuth(user);
 };
 
-const renderError = (
-  showError: boolean,
-  errorText: string = "Something went wrong"
-) => (showError ? <Error error={errorText} /> : null);
+const renderError = (showError: boolean, errorJSON: string = "") => {
+  if (!showError) {
+    return null;
+  }
+
+  const errorObject = JSON.parse(errorJSON);
+
+  return (
+    <Error error="The following fields are invalid: ">
+      <ul>
+        {errorObject.map((fieldId: string) => (
+          <li key={fieldId}>{fieldId}</li>
+        ))}
+      </ul>
+    </Error>
+  );
+};
+
+const requiredFields = ["displayName", "email", "password", "passwordConfirm"];
 
 const SignInForm = () => {
-  const [message, formHandler] = useFormState(handleForm, null);
+  const handleFormWithRequiredFields = handleForm.bind(null, requiredFields);
+
+  const [errorObject, formAction] = useFormState(
+    handleFormWithRequiredFields,
+    null
+  );
 
   return (
     <div className="signup-form">
-      <form action={formHandler}>
-        {renderError(!!message, message)}
+      <form action={formAction}>
+        {renderError(!!errorObject, errorObject)}
 
         <VerticalStack>
           <div className="form-field">

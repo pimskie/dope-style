@@ -1,32 +1,29 @@
 "use server";
 
-import { signInWithGooglePopup, createUserFromAuth } from "@/utils/firebase";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-const handleForm = (previousState: any, data: FormData) => {
-  const requiredFields = [
-    "displayName",
-    "email",
-    "password",
-    "passwordConfirm",
-  ];
+type RequiredFields = Array<string>;
 
+const handleForm = (
+  requiredFields: RequiredFields,
+  previousState: any,
+  data: FormData
+) => {
   try {
     const requiredEntries = Array.from(data.entries()).filter(([key]) =>
       requiredFields.includes(key)
     );
 
-    const hasEmptyRequiredEntries = requiredEntries.some(
-      ([key, value]) => !value
-    );
+    const emptyRequiredFields = requiredEntries
+      .filter(([key, value]) => !value)
+      .map(([fieldName]) => fieldName);
 
-    console.log({ hasEmptyRequiredEntries });
-    if (hasEmptyRequiredEntries) {
-      throw Error("Empty values");
+    if (emptyRequiredFields.length) {
+      throw Error(JSON.stringify(emptyRequiredFields));
     }
   } catch (e: any) {
-    return e.toString();
+    return e.message.toString();
   }
 
   const path = "/sign-in/success";
