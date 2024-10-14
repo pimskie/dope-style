@@ -39,12 +39,9 @@ const renderError = (showError: boolean, errorJSON: string = "") => {
 const requiredFields = ["displayName", "email", "password", "passwordConfirm"];
 
 const SignInForm = () => {
-  const handleFormWithRequiredFields = handleForm.bind(null, requiredFields);
+  // const handleFormWithRequiredFields = handleForm.bind(null, requiredFields);
 
-  const [errorObject, formAction] = useFormState(
-    handleFormWithRequiredFields,
-    null
-  );
+  const [errorObject, formAction] = useFormState(handleForm, null);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

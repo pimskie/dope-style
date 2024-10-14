@@ -5,11 +5,14 @@ import { redirect } from "next/navigation";
 
 type RequiredFields = Array<string>;
 
-const handleForm = (
-  requiredFields: RequiredFields,
-  previousState: any,
-  data: FormData
-) => {
+const requiredFields: RequiredFields = [
+  "displayName",
+  "email",
+  "password",
+  "passwordConfirm",
+];
+
+const handleForm = (previousState: any, data: FormData) => {
   try {
     const requiredEntries = Array.from(data.entries()).filter(([key]) =>
       requiredFields.includes(key)
