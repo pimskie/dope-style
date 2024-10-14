@@ -3,19 +3,17 @@
 // https://github.com/firebase/firebase-js-sdk/issues/7824
 
 import { handleForm } from "@/utils/handle-form";
-import { signInWithGooglePopup, createUserFromAuth } from "@/utils/firebase";
-import type { UserCredential } from "firebase/auth";
 
 import VerticalStack from "@/components/Layout/Stack/VerticalStack";
 import Error from "@/components/Error/Error";
 import { useFormState } from "react-dom";
 import { useState } from "react";
 
-const signInWithPopup = async () => {
-  const response: UserCredential = await signInWithGooglePopup();
-  const user = response.user;
-
-  await createUserFromAuth(user);
+const defaultFormFields = {
+  displayName: "pimskie",
+  email: "pim.vandie@iodigital.com",
+  password: "",
+  confirmPassword: "",
 };
 
 const renderError = (showError: boolean, errorJSON: string = "") => {
@@ -36,12 +34,19 @@ const renderError = (showError: boolean, errorJSON: string = "") => {
   );
 };
 
-const requiredFields = ["displayName", "email", "password", "passwordConfirm"];
-
 const SignInForm = () => {
-  // const handleFormWithRequiredFields = handleForm.bind(null, requiredFields);
-
   const [errorObject, formAction] = useFormState(handleForm, null);
+  const [formFields, setFormFields] = useState(defaultFormFields);
+
+  const { displayName, email, password, confirmPassword } = formFields;
+
+  const onFieldChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { name, value },
+    } = e;
+
+    setFormFields({ ...formFields, [name]: value });
+  };
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -62,6 +67,9 @@ const SignInForm = () => {
               type="text"
               id="displayName"
               name="displayName"
+              value={displayName}
+              required
+              onChange={onFieldChanged}
             />
           </div>
 
@@ -74,7 +82,9 @@ const SignInForm = () => {
               type="email"
               id="email"
               name="email"
-              defaultValue="pim.vandie@iodigital.com"
+              value={email}
+              required
+              onChange={onFieldChanged}
             />
           </div>
 
@@ -87,25 +97,27 @@ const SignInForm = () => {
               type="password"
               id="password"
               name="password"
+              required
+              onChange={onFieldChanged}
             />
           </div>
 
           <div className="form-field">
-            <label htmlFor="passwordConfirm" className="form-label">
+            <label htmlFor="confirmPassword" className="form-label">
               Password confirm
             </label>
             <input
               className="form-input"
               type="password"
-              id="passwordConfirm"
-              name="passwordConfirm"
+              id="confirmPassword"
+              name="confirmPassword"
+              required
+              onChange={onFieldChanged}
             />
           </div>
           <button type="submit">Create account</button>
         </VerticalStack>
       </form>
-
-      {/* <button onClick={signInWithPopup}>Sign in popup</button> */}
     </div>
   );
 };

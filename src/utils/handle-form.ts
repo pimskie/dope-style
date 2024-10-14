@@ -9,7 +9,7 @@ const requiredFields: RequiredFields = [
   "displayName",
   "email",
   "password",
-  "passwordConfirm",
+  "confirmPassword",
 ];
 
 const handleForm = (previousState: any, data: FormData) => {
