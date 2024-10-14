@@ -12,7 +12,7 @@ import { ValidationStatus } from "@/types/ValidationStatus";
 
 const defaultFormFields = {
   displayName: "pimskie",
-  email: `pim.vandie${performance.now()}@iodigital.com`,
+  email: `pim.vandie-${performance.now()}@iodigital.com`,
   password: "asdasd",
   confirmPassword: "asdasd",
 };

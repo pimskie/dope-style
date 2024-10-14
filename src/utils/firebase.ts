@@ -18,6 +18,10 @@ import {
 
 import type { User } from "firebase/auth";
 
+type UserAdditionalFields = {
+  displayName: string;
+};
+
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIRESTORE_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_FIRESTORE_AUTH_DOMAIN,
@@ -44,7 +48,10 @@ const getUserSnapshot = async (user: User) => {
   return { reference, snapshot };
 };
 
-const createUserFromAuth = async (user: User): Promise<DocumentData> => {
+const createUserFromAuth = async (
+  user: User,
+  additionalFields: Partial<UserAdditionalFields> = {}
+): Promise<DocumentData> => {
   if (!user) {
     throw Error("No user was supplied for `createUserFromAuth`");
   }
@@ -61,6 +68,7 @@ const createUserFromAuth = async (user: User): Promise<DocumentData> => {
     displayName,
     email,
     createdAt,
+    ...additionalFields,
   };
 
   try {
@@ -80,6 +88,7 @@ const createAuthUserWithEmailAndPassword = async (
   if (!email || !password) {
     throw Error("Missing email or password");
   }
+
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 
