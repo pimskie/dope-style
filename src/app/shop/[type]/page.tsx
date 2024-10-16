@@ -1,5 +1,3 @@
-import Head from "next/head";
-
 type Props = {
   params: { type: string };
 };

@@ -1,39 +1,85 @@
 "use client";
 
-// `signInWithRedirect` doesn't seem to work on localhost
-// https://github.com/firebase/firebase-js-sdk/issues/7824
+import { useEffect, useState } from "react";
+import { useFormState } from "react-dom";
+import { handleSignIn } from "@/utils/handle-sign-in";
+import VerticalStack from "@/components/Layout/Stack/VerticalStack";
 
-import {
-  signInWithGooglePopup,
-  createUserFromAuth,
-  auth,
-} from "@/utils/firebase";
+import Error from "@/components/Error/Error";
 
-import { getRedirectResult } from "firebase/auth";
-import type { UserCredential } from "firebase/auth";
-import { useEffect } from "react";
+import type { SignInFields } from "@/types/SignInFields";
+import { SignInCallBack } from "@/types/SignInCallBack";
+import { Authentication } from "@/types/Authentication";
 
-const signInWithPopup = async () => {
-  const response: UserCredential = await signInWithGooglePopup();
-  const user = response.user;
+const defaultFormFields: SignInFields = {
+  email: "pim.vandie@iodigital.com",
+  password: "wolla",
+};
 
-  await createUserFromAuth(user);
+const renderError = (message?: string) => {
+  return message ? <Error error={message}></Error> : null;
 };
 
 const SignInForm = () => {
+  const [formFields, setFormFields] = useState<SignInFields>(defaultFormFields);
+  const [signInFeedback, formHandler] = useFormState(handleSignIn, null);
+
   useEffect(() => {
-    const checkRedirectResult = async () => {
-      const response = await getRedirectResult(auth);
+    if (signInFeedback?.status === "ok") {
+    }
+  }, [signInFeedback]);
 
-      console.log(response);
-    };
+  const onFieldChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { name, value },
+    } = e;
 
-    checkRedirectResult();
-  }, []);
+    setFormFields({
+      ...formFields,
+      [name]: value,
+    });
+  };
 
   return (
     <div>
-      <button onClick={signInWithPopup}>Sign in popup</button>
+      <h2>Login</h2>
+
+      <form action={formHandler}>
+        <VerticalStack>
+          {renderError(signInFeedback?.message)}
+          <div className="form-field">
+            <label htmlFor="email" className="form-label">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              className="form-input"
+              value={formFields.email}
+              onChange={onFieldChanged}
+              required
+            />
+          </div>
+
+          <div className="form-field">
+            <label htmlFor="password-signin" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password-signin"
+              name="password"
+              className="form-input"
+              value={formFields.password}
+              onChange={onFieldChanged}
+              required
+            />
+          </div>
+
+          <button type="submit">Log in</button>
+        </VerticalStack>
+      </form>
     </div>
   );
 };

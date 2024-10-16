@@ -1,0 +1,5 @@
+.stack-vertical {
+  @apply grid;
+  @apply gap-2;
+  @apply md:gap-7;
+}

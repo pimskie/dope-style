@@ -1,6 +1,7 @@
 import { Category } from "@/types/Category";
 import "./CategoryCard.styles.css";
 import Link from "next/link";
+
 const CategoryCard = ({ title, imageSource, cta = "Buy now" }: Category) => {
   return (
     <Link href={`/shop/${title.toLocaleLowerCase()}`}>

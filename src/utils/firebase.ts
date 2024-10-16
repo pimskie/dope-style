@@ -1,6 +1,8 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signInWithRedirect,
   GoogleAuthProvider,
@@ -16,6 +18,10 @@ import {
 } from "firebase/firestore";
 
 import type { User } from "firebase/auth";
+
+type UserAdditionalFields = {
+  displayName: string;
+};
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIRESTORE_API_KEY,
@@ -43,7 +49,14 @@ const getUserSnapshot = async (user: User) => {
   return { reference, snapshot };
 };
 
-const createUserFromAuth = async (user: User): Promise<DocumentData> => {
+const createUserFromAuth = async (
+  user: User,
+  additionalFields: Partial<UserAdditionalFields> = {}
+): Promise<DocumentData> => {
+  if (!user) {
+    throw Error("No user was supplied for `createUserFromAuth`");
+  }
+
   const { reference, snapshot } = await getUserSnapshot(user);
 
   if (snapshot.exists()) {
@@ -56,6 +69,7 @@ const createUserFromAuth = async (user: User): Promise<DocumentData> => {
     displayName,
     email,
     createdAt,
+    ...additionalFields,
   };
 
   try {
@@ -68,9 +82,25 @@ const createUserFromAuth = async (user: User): Promise<DocumentData> => {
   }
 };
 
+const createAuthUserWithEmailAndPassword = async (
+  email: string,
+  password: string
+) => {
+  if (!email || !password) {
+    throw Error("Missing email or password");
+  }
+
+  return await createUserWithEmailAndPassword(auth, email, password);
+};
+
+const signInWithCredentials = (email: string, password: string) =>
+  signInWithEmailAndPassword(auth, email, password);
+
 export {
   auth,
   signInWithGooglePopup,
   signInWithGoogleRedirect,
   createUserFromAuth,
+  createAuthUserWithEmailAndPassword,
+  signInWithCredentials,
 };
