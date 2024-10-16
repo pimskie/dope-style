@@ -17,10 +17,10 @@ const requiredFields: RequiredFields = [
   "confirmPassword",
 ];
 
-const handleForm = async (previousState: any, data: FormData) => {
+const handleRegister = async (previousState: any, formData: FormData) => {
   let redirectPath: string | null = null;
 
-  const requiredEntries = Array.from(data.entries()).filter(([key]) =>
+  const requiredEntries = Array.from(formData.entries()).filter(([key]) =>
     requiredFields.includes(key)
   );
 
@@ -37,12 +37,12 @@ const handleForm = async (previousState: any, data: FormData) => {
 
   try {
     const { user } = await createAuthUserWithEmailAndPassword(
-      data.get("email")!.toString(),
-      data.get("password")!.toString()
+      formData.get("email")!.toString(),
+      formData.get("password")!.toString()
     );
 
     await createUserFromAuth(user, {
-      displayName: data.get("displayName")!.toString(),
+      displayName: formData.get("displayName")!.toString(),
     });
 
     redirectPath = "/sign-in/success";
@@ -64,4 +64,4 @@ const handleForm = async (previousState: any, data: FormData) => {
   }
 };
 
-export { handleForm };
+export { handleRegister };

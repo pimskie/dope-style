@@ -1,119 +1,83 @@
 "use client";
-// `signInWithRedirect` doesn't seem to work on localhost
-// https://github.com/firebase/firebase-js-sdk/issues/7824
 
-import { handleForm } from "@/utils/handle-form";
-
-import VerticalStack from "@/components/Layout/Stack/VerticalStack";
-import Error from "@/components/Error/Error";
+import { useEffect, useState } from "react";
 import { useFormState } from "react-dom";
-import { useState } from "react";
-import { ValidationStatus } from "@/types/ValidationStatus";
+import { handleSignIn } from "@/utils/handle-sign-in";
+import VerticalStack from "@/components/Layout/Stack/VerticalStack";
 
-const defaultFormFields = {
-  displayName: "pimskie",
-  email: `pim.vandie-${performance.now()}@iodigital.com`,
-  password: "asdasd",
-  confirmPassword: "asdasd",
+import Error from "@/components/Error/Error";
+
+import type { SignInFields } from "@/types/SignInFields";
+import { SignInCallBack } from "@/types/SignInCallBack";
+import { Authentication } from "@/types/Authentication";
+
+const defaultFormFields: SignInFields = {
+  email: "pim.vandie@iodigital.com",
+  password: "wolla",
 };
 
-const renderError = (error?: ValidationStatus, children?: React.ReactNode) => {
-  if (!error || !error.message) {
-    return null;
-  }
-
-  return <Error error={error.message}>{children}</Error>;
+const renderError = (message?: string) => {
+  return message ? <Error error={message}></Error> : null;
 };
 
 const SignInForm = () => {
-  const [serverActionError, formAction] = useFormState(handleForm, null);
-  const [clientSideError, setClientSideError] = useState<ValidationStatus>();
-  const [formFields, setFormFields] = useState(defaultFormFields);
+  const [formFields, setFormFields] = useState<SignInFields>(defaultFormFields);
+  const [signInFeedback, formHandler] = useFormState(handleSignIn, null);
 
-  const { displayName, email, password, confirmPassword } = formFields;
+  useEffect(() => {
+    if (signInFeedback?.status === "ok") {
+    }
+  }, [signInFeedback]);
 
   const onFieldChanged = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {
       target: { name, value },
     } = e;
 
-    setFormFields({ ...formFields, [name]: value });
-  };
-
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target as HTMLFormElement);
-    const response = await handleForm(null, formData);
-
-    setClientSideError(response);
+    setFormFields({
+      ...formFields,
+      [name]: value,
+    });
   };
 
   return (
-    <div className="signup-form">
-      <form action={formAction} onSubmit={onSubmit}>
-        {renderError(serverActionError || clientSideError)}
-        <VerticalStack>
-          <div className="form-field">
-            <label htmlFor="displayName" className="form-label">
-              Display name
-            </label>
-            <input
-              className="form-input"
-              type="text"
-              id="displayName"
-              name="displayName"
-              value={displayName}
-              required
-              onChange={onFieldChanged}
-            />
-          </div>
+    <div>
+      <h2>Login</h2>
 
+      <form action={formHandler}>
+        <VerticalStack>
+          {renderError(signInFeedback?.message)}
           <div className="form-field">
             <label htmlFor="email" className="form-label">
-              Email address
+              Email
             </label>
             <input
-              className="form-input"
               type="email"
               id="email"
               name="email"
-              value={email}
-              required
+              className="form-input"
+              value={formFields.email}
               onChange={onFieldChanged}
+              required
             />
           </div>
 
           <div className="form-field">
-            <label htmlFor="password" className="form-label">
+            <label htmlFor="password-signin" className="form-label">
               Password
             </label>
             <input
-              className="form-input"
               type="password"
-              id="password"
+              id="password-signin"
               name="password"
-              value={password}
-              required
+              className="form-input"
+              value={formFields.password}
               onChange={onFieldChanged}
+              required
             />
           </div>
 
-          <div className="form-field">
-            <label htmlFor="confirmPassword" className="form-label">
-              Password confirm
-            </label>
-            <input
-              className="form-input"
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              value={confirmPassword}
-              required
-              onChange={onFieldChanged}
-            />
-          </div>
-          <button type="submit">Create account</button>
+          <button type="submit">Log in</button>
         </VerticalStack>
       </form>
     </div>
