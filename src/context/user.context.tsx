@@ -1,9 +1,11 @@
-import { Authentication } from "@/types/Authentication";
+import type { AuthUser } from "@/types/AuthUser";
 import { createContext, useState } from "react";
 
+type CurrentUser = AuthUser | null;
+
 interface DefaultContext {
-  currentUser: Authentication | null;
-  setCurrentUser: (auth: Authentication | null) => void;
+  currentUser: CurrentUser;
+  setCurrentUser: (auth: CurrentUser) => void;
 }
 
 const defaultContext: DefaultContext = {
@@ -14,7 +16,7 @@ const defaultContext: DefaultContext = {
 const UserContext = createContext(defaultContext);
 
 const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [currentUser, setCurrentUser] = useState<Authentication | null>(null);
+  const [currentUser, setCurrentUser] = useState<CurrentUser>(null);
   const value = { currentUser, setCurrentUser };
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;

@@ -1,4 +1,4 @@
-interface Authentication {
+interface AuthUser {
   email: string;
   providerId: string;
   uid: string;
@@ -6,4 +6,4 @@ interface Authentication {
   displayName: string | null;
 }
 
-export type { Authentication };
+export type { AuthUser };

@@ -9,7 +9,7 @@ import Error from "@/components/Error/Error";
 import { UserContext } from "@/context/user.context";
 
 import type { SignInFields } from "@/types/SignInFields";
-import { Authentication } from "@/types/Authentication";
+import type { AuthUser } from "@/types/AuthUser";
 
 const defaultFormFields: SignInFields = {
   email: process.env.NEXT_PUBLIC_EMAIL_ADDRESS!,
@@ -27,7 +27,7 @@ const SignInForm = () => {
 
   useEffect(() => {
     if (signInFeedback?.status === "ok") {
-      const user: Authentication = signInFeedback.payload;
+      const user: AuthUser = signInFeedback.payload;
 
       setCurrentUser(user);
       redirect(`/`);

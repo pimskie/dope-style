@@ -1,7 +1,7 @@
 import { signInWithCredentials } from "@/utils/firebase";
 import type { ValidationStatus } from "@/types/ValidationStatus";
 import { User } from "firebase/auth";
-import { Authentication } from "@/types/Authentication";
+import type { AuthUser } from "@/types/AuthUser";
 
 const handleSignIn = async (previousState: any, formData: FormData) => {
   const email = formData.get("email")?.toString();
@@ -20,7 +20,7 @@ const handleSignIn = async (previousState: any, formData: FormData) => {
 
     console.log({ user });
 
-    const authObject: Authentication = {
+    const authObject: AuthUser = {
       uid: user.uid,
       displayName: user.displayName,
       providerId: user.providerId,
