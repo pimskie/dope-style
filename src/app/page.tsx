@@ -1,5 +1,6 @@
 import type { Category } from "@/types/Category";
 import CategoryList from "@/components/CategoryList/CategoryList";
+import Heading from "@/components/Heading/Heading";
 
 type CategoryList = Array<Category>;
 
@@ -24,6 +25,7 @@ const App = () => {
   ];
   return (
     <div>
+      <Heading>Welcome to Dope Style</Heading>
       <CategoryList categories={categories} />
     </div>
   );

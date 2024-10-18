@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signInWithRedirect,
+  signOut,
   GoogleAuthProvider,
 } from "firebase/auth";
 import {
@@ -96,10 +97,12 @@ const createAuthUserWithEmailAndPassword = async (
 const signInWithCredentials = (email: string, password: string) =>
   signInWithEmailAndPassword(auth, email, password);
 
+const signOutUser = () => signOut(auth);
 export {
   auth,
   signInWithGooglePopup,
   signInWithGoogleRedirect,
+  signOutUser,
   createUserFromAuth,
   createAuthUserWithEmailAndPassword,
   signInWithCredentials,

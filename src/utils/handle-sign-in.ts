@@ -18,8 +18,11 @@ const handleSignIn = async (previousState: any, formData: FormData) => {
     const result = await signInWithCredentials(email, password);
     const { user }: { user: User } = result;
 
+    console.log({ user });
+
     const authObject: Authentication = {
       uid: user.uid,
+      displayName: user.displayName,
       providerId: user.providerId,
       email: user.email!,
       accessToken: user.accessToken,
@@ -30,12 +33,7 @@ const handleSignIn = async (previousState: any, formData: FormData) => {
       payload: authObject,
     };
 
-    // cookies.set({
-    //   name: "user",
-    //   value: JSON.stringify(authObject),
-    //   httpOnly: true,
-    //   path: "/",
-    // });
+    return returnValue;
   } catch (e: any) {
     const { code } = e;
 
