@@ -2,15 +2,26 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useContext } from "react";
+
+import { UserContext } from "@/context/user.context";
+
+import { signOutUser } from "@/utils/firebase";
 
 const links = [
   { label: "home", path: "/" },
   { label: "shop", path: "/shop" },
-  { label: "Sign in", path: "/sign-in" },
 ];
 
 const Navigation = () => {
   const pathname = usePathname();
+  const { currentUser, setCurrentUser } = useContext(UserContext);
+
+  const onSignOutClicked = async () => {
+    await signOutUser();
+
+    setCurrentUser(null);
+  };
 
   return (
     <nav className="flex gap-4">
@@ -25,6 +36,17 @@ const Navigation = () => {
           {link.label}
         </Link>
       ))}
+
+      {currentUser ? (
+        <div>
+          Welcome!
+          <button onClick={onSignOutClicked}>Sign out</button>
+        </div>
+      ) : (
+        <Link href="/sign-in" className="block px-2 py-3">
+          Sign in
+        </Link>
+      )}
     </nav>
   );
 };

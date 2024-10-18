@@ -1,19 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { redirect } from "next/navigation";
+import { useEffect, useState, useContext } from "react";
 import { useFormState } from "react-dom";
 import { handleSignIn } from "@/utils/handle-sign-in";
 import VerticalStack from "@/components/Layout/Stack/VerticalStack";
-
 import Error from "@/components/Error/Error";
+import { UserContext } from "@/context/user.context";
 
 import type { SignInFields } from "@/types/SignInFields";
-import { SignInCallBack } from "@/types/SignInCallBack";
 import { Authentication } from "@/types/Authentication";
 
 const defaultFormFields: SignInFields = {
-  email: "pim.vandie@iodigital.com",
-  password: "wolla",
+  email: process.env.NEXT_PUBLIC_EMAIL_ADDRESS!,
+  password: process.env.NEXT_PUBLIC_PASSWORD!,
 };
 
 const renderError = (message?: string) => {
@@ -23,9 +23,14 @@ const renderError = (message?: string) => {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState<SignInFields>(defaultFormFields);
   const [signInFeedback, formHandler] = useFormState(handleSignIn, null);
+  const { setCurrentUser } = useContext(UserContext);
 
   useEffect(() => {
     if (signInFeedback?.status === "ok") {
+      const user: Authentication = signInFeedback.payload;
+
+      setCurrentUser(user);
+      redirect(`/`);
     }
   }, [signInFeedback]);
 

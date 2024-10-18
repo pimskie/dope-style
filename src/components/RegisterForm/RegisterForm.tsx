@@ -2,7 +2,7 @@
 // `signInWithRedirect` doesn't seem to work on localhost
 // https://github.com/firebase/firebase-js-sdk/issues/7824
 
-import { handleRegister } from "@/utils/handle-form";
+import { handleRegister } from "@/utils/handle-register";
 
 import VerticalStack from "@/components/Layout/Stack/VerticalStack";
 import Error from "@/components/Error/Error";
@@ -12,9 +12,9 @@ import { ValidationStatus } from "@/types/ValidationStatus";
 
 const defaultFormFields = {
   displayName: "pimskie",
-  email: `pim.vandie-${performance.now()}@iodigital.com`,
-  password: "asdasd",
-  confirmPassword: "asdasd",
+  email: process.env.NEXT_PUBLIC_EMAIL_ADDRESS!,
+  password: process.env.NEXT_PUBLIC_PASSWORD!,
+  confirmPassword: process.env.NEXT_PUBLIC_PASSWORD!,
 };
 
 const renderError = (error?: ValidationStatus, children?: React.ReactNode) => {
@@ -27,9 +27,8 @@ const renderError = (error?: ValidationStatus, children?: React.ReactNode) => {
 
 const SignInForm = () => {
   const [serverActionError, formAction] = useFormState(handleRegister, null);
-
-  const [clientSideError, setClientSideError] = useState<ValidationStatus>();
   const [formFields, setFormFields] = useState(defaultFormFields);
+  const [clientSideError, setClientSideError] = useState<ValidationStatus>();
 
   const { displayName, email, password, confirmPassword } = formFields;
 
