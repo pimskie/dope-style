@@ -3,9 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useContext } from "react";
-
 import { UserContext } from "@/context/user.context";
-
 import { signOutUser } from "@/utils/firebase/authentication";
 
 const links = [
@@ -15,12 +13,10 @@ const links = [
 
 const Navigation = () => {
   const pathname = usePathname();
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
 
   const onSignOutClicked = async () => {
     await signOutUser();
-
-    setCurrentUser(null);
   };
 
   return (
