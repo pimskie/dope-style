@@ -1,5 +1,6 @@
 "use client";
 import { useCategory } from "@/context/category.context";
+import Leader from "@/components/Typography/Leader/Leader";
 
 const CategoryOverview = () => {
   const { category } = useCategory();
@@ -9,7 +10,7 @@ const CategoryOverview = () => {
       <h1>Category: {category.name}</h1>
 
       <img src={category.image} alt={`An image of ${category.name}`} />
-      <p className="leader">{category.leader}</p>
+      <Leader>{category.leader}</Leader>
 
       <p className="description">{category.description}</p>
     </div>

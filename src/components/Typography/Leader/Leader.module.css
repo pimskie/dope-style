@@ -1,0 +1,5 @@
+.leader {
+  @apply text-lg;
+  @apply md:text-2xl;
+  @apply mb-5;
+}

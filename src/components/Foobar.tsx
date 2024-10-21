@@ -8,8 +8,6 @@ const Foobar = async () => {
 
   const category = await StoreService.category.getById("sweaters");
 
-  console.log(category);
-
   const clickHandler = () => {
     setBar(bar + 1);
   };

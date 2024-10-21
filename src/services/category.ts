@@ -14,8 +14,6 @@ const category = {
       ...(doc.data() as CategoryDocument),
     }));
 
-    console.log(categoryList);
-
     return categoryList;
   },
 
