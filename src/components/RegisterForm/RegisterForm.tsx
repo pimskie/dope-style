@@ -27,6 +27,7 @@ const renderError = (error?: ValidationStatus, children?: React.ReactNode) => {
 
 const SignInForm = () => {
   const [serverActionError, formAction] = useFormState(handleRegister, null);
+
   const [formFields, setFormFields] = useState(defaultFormFields);
   const [clientSideError, setClientSideError] = useState<ValidationStatus>();
 
@@ -79,7 +80,6 @@ const SignInForm = () => {
               id="email"
               name="email"
               value={email}
-              required
               onChange={onFieldChanged}
             />
           </div>

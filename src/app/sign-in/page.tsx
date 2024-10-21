@@ -1,9 +1,6 @@
-// "use client";
-
 import RegisterForm from "@/components/RegisterForm/RegisterForm";
 import SignInForm from "@/components/SignInForm/SignInForm";
 import SignInPopup from "@/components/SignInForm/SignInPopup";
-import { Authentication } from "@/types/Authentication";
 import Heading from "@/components/Heading/Heading";
 
 export async function generateMetadata() {

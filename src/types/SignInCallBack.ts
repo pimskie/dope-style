@@ -1,5 +1,5 @@
-import { Authentication } from "./Authentication";
+import type { AuthUser } from "./AuthUser";
 
-type SignInCallBack = (auth: Authentication) => void;
+type SignInCallBack = (auth: AuthUser) => void;
 
 export type { SignInCallBack };

@@ -6,10 +6,9 @@ import { useFormState } from "react-dom";
 import { handleSignIn } from "@/utils/handle-sign-in";
 import VerticalStack from "@/components/Layout/Stack/VerticalStack";
 import Error from "@/components/Error/Error";
-import { UserContext } from "@/context/user.context";
 
 import type { SignInFields } from "@/types/SignInFields";
-import { Authentication } from "@/types/Authentication";
+import Heading from "../Heading/Heading";
 
 const defaultFormFields: SignInFields = {
   email: process.env.NEXT_PUBLIC_EMAIL_ADDRESS!,
@@ -23,13 +22,9 @@ const renderError = (message?: string) => {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState<SignInFields>(defaultFormFields);
   const [signInFeedback, formHandler] = useFormState(handleSignIn, null);
-  const { setCurrentUser } = useContext(UserContext);
 
   useEffect(() => {
     if (signInFeedback?.status === "ok") {
-      const user: Authentication = signInFeedback.payload;
-
-      setCurrentUser(user);
       redirect(`/`);
     }
   }, [signInFeedback]);
@@ -47,7 +42,7 @@ const SignInForm = () => {
 
   return (
     <div>
-      <h2>Login</h2>
+      <Heading Tag="h2">Login</Heading>
 
       <form action={formHandler}>
         <VerticalStack>

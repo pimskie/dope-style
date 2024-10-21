@@ -1,7 +1,11 @@
-import { signInWithCredentials } from "@/utils/firebase";
+import { signInWithCredentials } from "@/utils/firebase/authentication";
 import type { ValidationStatus } from "@/types/ValidationStatus";
 import { User } from "firebase/auth";
-import { Authentication } from "@/types/Authentication";
+import type { AuthUser } from "@/types/AuthUser";
+
+interface UserWithToken extends User {
+  accessToken: string;
+}
 
 const handleSignIn = async (previousState: any, formData: FormData) => {
   const email = formData.get("email")?.toString();
@@ -16,11 +20,9 @@ const handleSignIn = async (previousState: any, formData: FormData) => {
 
   try {
     const result = await signInWithCredentials(email, password);
-    const { user }: { user: User } = result;
+    const user = result.user as UserWithToken;
 
-    console.log({ user });
-
-    const authObject: Authentication = {
+    const authObject: AuthUser = {
       uid: user.uid,
       displayName: user.displayName,
       providerId: user.providerId,
