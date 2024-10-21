@@ -2,20 +2,22 @@
 
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
-import {
-  createAuthUserWithEmailAndPassword,
-  createUserFromAuth,
-} from "@/utils/firebase";
-import { ValidationStatus } from "@/types/ValidationStatus";
 
-type RequiredFields = Array<string>;
+import { storeUser } from "@/utils/firebase/firebase";
+import { createUserWithCredentials } from "@/utils/firebase/authentication";
 
-const requiredFields: RequiredFields = [
-  "displayName",
-  "email",
-  "password",
-  "confirmPassword",
-];
+import type { ValidationStatus } from "@/types/ValidationStatus";
+
+const requiredFields = ["displayName", "confirmPassword"];
+
+const errorCodeMessageMap = new Map([
+  // no info leaking
+  ["auth/email-already-in-use", "Something went wrong. Please try again"],
+  ["auth/missing-password", "Password is missing"],
+  ["auth/missing-email", "Email address is missing"],
+  ["auth/invalid-email", "Invalid email"],
+  ["default", "Something went wrong. Please try again"],
+]);
 
 const handleRegister = async (previousState: any, formData: FormData) => {
   let redirectPath: string | null = null;
@@ -36,12 +38,12 @@ const handleRegister = async (previousState: any, formData: FormData) => {
   }
 
   try {
-    const { user } = await createAuthUserWithEmailAndPassword(
+    const { user } = await createUserWithCredentials(
       formData.get("email")!.toString(),
       formData.get("password")!.toString()
     );
 
-    await createUserFromAuth(user, {
+    await storeUser(user, {
       displayName: formData.get("displayName")!.toString(),
     });
 
@@ -52,9 +54,12 @@ const handleRegister = async (previousState: any, formData: FormData) => {
       message: "ok",
     };
   } catch (e: any) {
+    const message =
+      errorCodeMessageMap.get(e.code) ?? errorCodeMessageMap.get("default");
+
     return <ValidationStatus>{
       status: "error",
-      message: e.message.toString(),
+      message,
     };
   } finally {
     if (redirectPath) {

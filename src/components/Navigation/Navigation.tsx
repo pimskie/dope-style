@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 import { UserContext } from "@/context/user.context";
 
-import { signOutUser } from "@/utils/firebase";
+import { signOutUser } from "@/utils/firebase/authentication";
 
 const links = [
   { label: "home", path: "/" },

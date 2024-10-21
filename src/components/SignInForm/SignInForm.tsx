@@ -10,6 +10,7 @@ import { UserContext } from "@/context/user.context";
 
 import type { SignInFields } from "@/types/SignInFields";
 import type { AuthUser } from "@/types/AuthUser";
+import Heading from "../Heading/Heading";
 
 const defaultFormFields: SignInFields = {
   email: process.env.NEXT_PUBLIC_EMAIL_ADDRESS!,
@@ -23,6 +24,7 @@ const renderError = (message?: string) => {
 const SignInForm = () => {
   const [formFields, setFormFields] = useState<SignInFields>(defaultFormFields);
   const [signInFeedback, formHandler] = useFormState(handleSignIn, null);
+
   const { setCurrentUser } = useContext(UserContext);
 
   useEffect(() => {
@@ -47,7 +49,7 @@ const SignInForm = () => {
 
   return (
     <div>
-      <h2>Login</h2>
+      <Heading Tag="h2">Login</Heading>
 
       <form action={formHandler}>
         <VerticalStack>
