@@ -1,3 +1,9 @@
+import { StoreService } from "@/services/store";
+import CategoryOverview from "@/components/CategoryOverview/CategoryOverview";
+import CategoryProviderWrapper from "./CategoryProviderWrapper";
+
+import { notFound } from "next/navigation";
+
 type Props = {
   params: { type: string };
 };
@@ -8,10 +14,18 @@ export async function generateMetadata({ params }: Props) {
   };
 }
 
-const Shop = ({ params }: Props) => {
+const Shop = async ({ params }: Props) => {
+  const fetchedCategory = await StoreService.category.getById(params.type);
+
+  if (!fetchedCategory) {
+    return notFound();
+  }
+
   return (
     <div>
-      <h1>{params.type}</h1>
+      <CategoryProviderWrapper category={fetchedCategory}>
+        <CategoryOverview />
+      </CategoryProviderWrapper>
     </div>
   );
 };

@@ -1,8 +1,24 @@
+"use client";
+
+import { StoreService } from "@/services/store";
 import { useState } from "react";
 
-const Foobar = () => {
-  const [bar, setBar] = useState("");
+const Foobar = async () => {
+  const [bar, setBar] = useState(0);
 
-  return <h1>Foobar, yo</h1>;
+  const category = await StoreService.category.getById("sweaters");
+
+  console.log(category);
+
+  const clickHandler = () => {
+    setBar(bar + 1);
+  };
+  return (
+    <div>
+      <h1>Foobar, yo</h1>
+      {bar}
+      <button onClick={clickHandler}>Click</button>
+    </div>
+  );
 };
 export default Foobar;

@@ -1,7 +1,14 @@
-type Category = {
-  imageSource: string;
-  title: string;
-  cta?: string;
-};
+import type { Product } from "./Product";
+interface CategoryDocument {
+  name: string;
+  image: string;
+  products?: Product[];
+  leader: string;
+  description: string;
+}
 
-export type { Category };
+interface Category extends CategoryDocument {
+  id: string;
+}
+
+export type { Category, CategoryDocument };

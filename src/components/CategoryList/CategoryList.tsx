@@ -11,7 +11,7 @@ const CategoryList = ({ categories }: Props) => {
       <Heading Tag="h2">Categories</Heading>
       <div className="categories-container grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {categories.map((category) => (
-          <CategoryCard {...category} key={category.title} />
+          <CategoryCard {...category} key={category.name} />
         ))}
       </div>
     </div>

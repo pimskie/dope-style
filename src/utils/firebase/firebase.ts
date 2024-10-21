@@ -60,4 +60,4 @@ const storeUser = async (
   }
 };
 
-export { storeUser };
+export { storeUser, database };
