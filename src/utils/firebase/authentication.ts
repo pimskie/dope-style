@@ -5,16 +5,13 @@ import {
   signInWithPopup,
   signOut,
   GoogleAuthProvider,
+  onAuthStateChanged,
+  User,
 } from "firebase/auth";
 
 import { initialize } from "./initialize";
 
-import type { User } from "firebase/auth";
-
-type UserAdditionalFields = {
-  displayName: string;
-};
-
+type AuthChangedCallback = (user: User | null) => void;
 initialize();
 
 const provider: GoogleAuthProvider = new GoogleAuthProvider();
@@ -31,9 +28,13 @@ const signInWithCredentials = (email: string, password: string) =>
 
 const signOutUser = () => signOut(auth);
 
+const onAuthChanged = (callback: AuthChangedCallback) =>
+  onAuthStateChanged(auth, callback);
+
 export {
   signInWithGooglePopup,
   signInWithCredentials,
   createUserWithCredentials,
   signOutUser,
+  onAuthChanged,
 };
