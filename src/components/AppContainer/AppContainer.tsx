@@ -2,6 +2,7 @@
 
 import { UserProvider } from "@/context/user.context";
 import Navigation from "@/components/Navigation/Navigation";
+import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 
 const AppContainer = ({ children }: { children?: React.ReactNode }) => {
   return (
@@ -9,7 +10,7 @@ const AppContainer = ({ children }: { children?: React.ReactNode }) => {
       <UserProvider>
         <Navigation />
 
-        {children}
+        <div className="container">{children}</div>
       </UserProvider>
     </div>
   );
