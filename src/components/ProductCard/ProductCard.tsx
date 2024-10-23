@@ -42,7 +42,9 @@ const ProductCard = (props: Props) => {
           </div>
         </div>
 
-        <div className={styles.cardCta}>See more</div>
+        <div className={styles.cardCta}>
+          <span>See more</span>
+        </div>
       </div>
     </Link>
   );

@@ -1,0 +1,57 @@
+.appContainerInner {
+  @apply relative;
+  @apply z-10;
+}
+
+/* .visual {
+  @apply fixed;
+  @apply p-5;
+  top: 20%;
+  width: 200vw;
+  height: 200vh;
+
+  background-color: red;
+
+  left: -30%;
+
+  rotate: -15deg;
+  z-index: -1;
+
+  text-align: center;
+
+  animation-name: positionAnimation;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+
+  animation-timeline: scroll(y nearest);
+
+  animation-range: cover 0% 100%;
+} */
+
+.visual {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  @apply bg-slate-400 dark:bg-gray-900;
+
+  animation-name: positionAnimation;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+
+  animation-timeline: scroll(y nearest);
+
+  animation-range: cover 0% 100%;
+}
+
+@keyframes positionAnimation {
+  0% {
+    top: 90%;
+  }
+
+  100% {
+    top: 0%;
+  }
+}

@@ -1,3 +1,9 @@
+.cardLink {
+  clip-path: polygon(0% 0%, 100% 0, 100% 100%, 0 100%, 0 0%);
+
+  @apply block;
+  transition: clip-path 0.1s ease-in-out;
+}
 .card {
   @apply relative;
   @apply overflow-hidden;
@@ -17,8 +23,10 @@
 }
 
 .cardContent {
-  @apply bg-sky-600;
+  @apply bg-lime-600;
   @apply p-3;
+
+  @apply lg:p-5;
 }
 
 .cardContent {
@@ -38,12 +46,12 @@
 
   @apply p-3;
 
-  @apply bg-stone-50;
+  @apply bg-fuchsia-400;
   @apply bg-opacity-70;
-
-  @apply text-cyan-950;
+  @apply text-white;
 
   @apply -translate-x-1/2;
+  @apply -skew-x-12;
 
   @apply opacity-0;
 
@@ -52,10 +60,21 @@
   @apply ease-out;
 }
 
+.cardCta span {
+  @apply skew-x-12;
+  @apply block;
+}
+
 .cardLink:hover {
+  clip-path: polygon(5% 0%, 100% 0, 100% 100%, 0 100%, 0 5%);
+
   .cardImage {
     @apply contrast-125;
     @apply scale-105;
+  }
+
+  .cardContent {
+    @apply bg-lime-700;
   }
 
   .cardCta {

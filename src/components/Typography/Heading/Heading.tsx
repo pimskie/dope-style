@@ -1,3 +1,5 @@
+import styles from "./Heading.module.css";
+
 type HeadingTag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 
 interface Props {
@@ -6,7 +8,7 @@ interface Props {
 }
 
 const Heading = ({ Tag = "h1", children }: Props) => {
-  return <Tag>{children}</Tag>;
+  return <Tag className={styles.heading}>{children}</Tag>;
 };
 
 export default Heading;
