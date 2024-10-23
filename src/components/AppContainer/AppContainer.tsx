@@ -10,6 +10,8 @@ const AppContainer = ({ children }: { children?: React.ReactNode }) => {
       <UserProvider>
         <Navigation />
 
+        <Breadcrumbs homeElement="Home" separator="|" />
+
         <div className="container">{children}</div>
       </UserProvider>
     </div>

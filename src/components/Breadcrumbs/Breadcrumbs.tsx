@@ -1,37 +1,50 @@
-import Link from "next/link";
+"use client";
+
+import React, { ReactNode } from "react";
+
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
-const Breadcrumbs = () => {
-  const pathname = usePathname();
-  const segments = pathname.split("/").filter((item) => item !== "");
+import { ucfirst } from "@/utils/string/ucfirst";
 
-  const items = segments.map((item, index) => {
-    const href = `${segments.slice(0, index + 1).join("/")}`;
-    const label = item || "Home";
+type Props = {
+  homeElement: ReactNode;
+  separator: ReactNode;
+};
 
-    return {
-      href,
-      label,
-    };
-  });
+const Breadcrumbs = ({ homeElement, separator }: Props) => {
+  const paths = usePathname();
+  const pathNames = paths.split("/").filter((path) => path);
+
+  const listClasses = "inline-block px-4 py-2";
+  const activeClasses = "";
 
   return (
-    <div>
-      {items.map((item) => {
+    <ul className="flex items-center">
+      <li className={listClasses}>
+        <Link href={"/"}>{homeElement}</Link>
+      </li>
+
+      {pathNames.length > 0 && separator}
+
+      {pathNames.map((link, index) => {
+        const href = `/${pathNames.slice(0, index + 1).join("/")}`;
+        const itemClasses =
+          paths === href ? `${listClasses} ${activeClasses}` : listClasses;
+        const itemLink = ucfirst(link);
+
         return (
-          <div className="item" key={item.label}>
-            <Link
-              className={`block px-2 py-3 ${
-                pathname === item.href ? "active" : ""
-              }`}
-              href={item.href}
-            >
-              {item.label}
-            </Link>
-          </div>
+          <React.Fragment key={index}>
+            <li>
+              <Link className={itemClasses} href={href}>
+                <span>{itemLink}</span>
+              </Link>
+            </li>
+            {pathNames.length !== index + 1 && separator}
+          </React.Fragment>
         );
       })}
-    </div>
+    </ul>
   );
 };
 
