@@ -8,6 +8,8 @@ import { signOutUser } from "@/utils/firebase/authentication";
 import Cart from "@/components/Cart/Cart";
 import Popover from "@/components/Popover/Popover";
 
+import { useCart } from "@/context/cart.context";
+
 const links = [
   { label: "home", path: "/" },
   { label: "shop", path: "/shop" },
@@ -17,6 +19,8 @@ const Navigation = () => {
   const pathname = usePathname();
   const { currentUser } = useContext(UserContext);
   const [isCartOpen, setIsCartOpen] = useState<Boolean>(false);
+
+  const { items } = useCart();
 
   const onCartToggle = () => {
     setIsCartOpen(!isCartOpen);
@@ -55,7 +59,7 @@ const Navigation = () => {
               </Link>
             )}
 
-            <Popover trigger={"Cart"} content={<Cart />} />
+            <Popover trigger={`Cart (${items.length})`} content={<Cart />} />
           </div>
         </div>
       </div>
