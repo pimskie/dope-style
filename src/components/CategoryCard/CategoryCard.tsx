@@ -2,9 +2,9 @@ import { Category } from "@/types/Category";
 import "./CategoryCard.styles.css";
 import Link from "next/link";
 
-const CategoryCard = ({ name, image }: Category) => {
+const CategoryCard = ({ name, image, slug }: Category) => {
   return (
-    <Link href={`/shop/${name.toLocaleLowerCase()}`}>
+    <Link href={`/shop/${slug.toLocaleLowerCase()}`}>
       <div className="w-full aspect-square relative flex p-4 items-end">
         <img
           src={image}

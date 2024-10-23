@@ -2,7 +2,7 @@ import { StoreService } from "@/services/store";
 
 import type { Category } from "@/types/Category";
 import CategoryList from "@/components/CategoryList/CategoryList";
-import Heading from "@/components/Heading/Heading";
+import Heading from "@/components/Typography/Heading/Heading";
 import Leader from "@/components/Typography/Leader/Leader";
 
 type CategoryList = Array<Category>;

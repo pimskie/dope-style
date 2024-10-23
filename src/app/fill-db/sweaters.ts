@@ -1,5 +1,6 @@
 const sweaters = [
   {
+    categoryId: "2",
     name: "Pullover Hoodie",
     price: 49.99,
     image: "https://picsum.photos/id/200/500/500",
@@ -7,6 +8,7 @@ const sweaters = [
     description: "Comfortable pullover hoodie great for everyday wear.",
   },
   {
+    categoryId: "2",
     name: "Crewneck Sweatshirt",
     price: 39.89,
     image: "https://picsum.photos/id/201/500/500",
@@ -14,6 +16,7 @@ const sweaters = [
     description: "Classic crewneck sweatshirt with a relaxed fit.",
   },
   {
+    categoryId: "2",
     name: "Zip-up Hoodie",
     price: 59.99,
     image: "https://picsum.photos/id/202/500/500",
@@ -21,6 +24,7 @@ const sweaters = [
     description: "Versatile zip-up hoodie for layering.",
   },
   {
+    categoryId: "2",
     name: "Fleece Jacket",
     price: 69.49,
     image: "https://picsum.photos/id/203/500/500",
@@ -28,6 +32,7 @@ const sweaters = [
     description: "Warm fleece jacket ideal for outdoor activities.",
   },
   {
+    categoryId: "2",
     name: "Wool Sweater",
     price: 89.99,
     image: "https://picsum.photos/id/204/500/500",
@@ -35,6 +40,7 @@ const sweaters = [
     description: "Elegant wool sweater for a sophisticated look.",
   },
   {
+    categoryId: "2",
     name: "Knitted Sweater",
     price: 49.29,
     image: "https://picsum.photos/id/205/500/500",
@@ -42,6 +48,7 @@ const sweaters = [
     description: "Cozy knitted sweater for chilly days.",
   },
   {
+    categoryId: "2",
     name: "Cashmere Sweater",
     price: 99.89,
     image: "https://picsum.photos/id/206/500/500",
@@ -49,6 +56,7 @@ const sweaters = [
     description: "Luxurious cashmere sweater for ultimate comfort.",
   },
   {
+    categoryId: "2",
     name: "Cardigan",
     price: 59.79,
     image: "https://picsum.photos/id/207/500/500",
@@ -56,6 +64,7 @@ const sweaters = [
     description: "Classic cardigan sweater for a timeless look.",
   },
   {
+    categoryId: "2",
     name: "V-neck Sweater",
     price: 44.99,
     image: "https://picsum.photos/id/208/500/500",
@@ -63,6 +72,7 @@ const sweaters = [
     description: "Stylish V-neck sweater for a casual style.",
   },
   {
+    categoryId: "2",
     name: "Button-up Sweater",
     price: 54.89,
     image: "https://picsum.photos/id/209/500/500",
@@ -70,6 +80,7 @@ const sweaters = [
     description: "Elegant button-up sweater for formal occasions.",
   },
   {
+    categoryId: "2",
     name: "Turtleneck Sweater",
     price: 64.49,
     image: "https://picsum.photos/id/210/500/500",
@@ -77,6 +88,7 @@ const sweaters = [
     description: "Warm turtleneck sweater for cold weather.",
   },
   {
+    categoryId: "2",
     name: "Mock Neck Sweater",
     price: 59.29,
     image: "https://picsum.photos/id/211/500/500",
@@ -84,6 +96,7 @@ const sweaters = [
     description: "Trendy mock neck sweater for a modern look.",
   },
   {
+    categoryId: "2",
     name: "Cowl Neck Sweater",
     price: 69.99,
     image: "https://picsum.photos/id/212/500/500",
@@ -91,6 +104,7 @@ const sweaters = [
     description: "Cozy cowl neck sweater for ultimate warmth.",
   },
   {
+    categoryId: "2",
     name: "Roll Neck Sweater",
     price: 64.79,
     image: "https://picsum.photos/id/213/500/500",
@@ -98,6 +112,7 @@ const sweaters = [
     description: "Classic roll neck sweater for a sophisticated style.",
   },
   {
+    categoryId: "2",
     name: "Chunky Knit Sweater",
     price: 79.49,
     image: "https://picsum.photos/id/214/500/500",
@@ -105,6 +120,7 @@ const sweaters = [
     description: "Thick and warm chunky knit sweater.",
   },
   {
+    categoryId: "2",
     name: "Cable Knit Sweater",
     price: 74.59,
     image: "https://picsum.photos/id/215/500/500",
@@ -112,6 +128,7 @@ const sweaters = [
     description: "Classic cable knit sweater for a timeless look.",
   },
   {
+    categoryId: "2",
     name: "Fair Isle Sweater",
     price: 89.89,
     image: "https://picsum.photos/id/216/500/500",
@@ -119,6 +136,7 @@ const sweaters = [
     description: "Colorful Fair Isle sweater for a festive style.",
   },
   {
+    categoryId: "2",
     name: "Sweater Vest",
     price: 39.99,
     image: "https://picsum.photos/id/217/500/500",
@@ -126,6 +144,7 @@ const sweaters = [
     description: "Trendy sweater vest for layering.",
   },
   {
+    categoryId: "2",
     name: "Shawl Collar Sweater",
     price: 69.49,
     image: "https://picsum.photos/id/218/500/500",
@@ -133,6 +152,7 @@ const sweaters = [
     description: "Stylish shawl collar sweater for added warmth.",
   },
   {
+    categoryId: "2",
     name: "Henley Sweater",
     price: 54.29,
     image: "https://picsum.photos/id/219/500/500",
@@ -140,6 +160,7 @@ const sweaters = [
     description: "Casual Henley sweater for a laid-back look.",
   },
   {
+    categoryId: "2",
     name: "Sweater Dress",
     price: 79.59,
     image: "https://picsum.photos/id/220/500/500",
@@ -147,6 +168,7 @@ const sweaters = [
     description: "Elegant sweater dress for a chic style.",
   },
   {
+    categoryId: "2",
     name: "Off Shoulder Sweater",
     price: 59.99,
     image: "https://picsum.photos/id/221/500/500",
@@ -154,6 +176,7 @@ const sweaters = [
     description: "Fashionable off-shoulder sweater for a trendy look.",
   },
   {
+    categoryId: "2",
     name: "Asymmetrical Sweater",
     price: 64.79,
     image: "https://picsum.photos/id/222/500/500",
@@ -161,6 +184,7 @@ const sweaters = [
     description: "Unique asymmetrical sweater for a modern style.",
   },
   {
+    categoryId: "2",
     name: "Ribbed Sweater",
     price: 49.99,
     image: "https://picsum.photos/id/223/500/500",
@@ -168,6 +192,7 @@ const sweaters = [
     description: "Classic ribbed sweater for a comfortable fit.",
   },
   {
+    categoryId: "2",
     name: "Oversized Sweater",
     price: 69.49,
     image: "https://picsum.photos/id/224/500/500",
@@ -175,6 +200,7 @@ const sweaters = [
     description: "Cozy oversized sweater for a relaxed look.",
   },
   {
+    categoryId: "2",
     name: "Fringe Sweater",
     price: 74.89,
     image: "https://picsum.photos/id/225/500/500",
@@ -182,6 +208,7 @@ const sweaters = [
     description: "Stylish fringe sweater for a trendy style.",
   },
   {
+    categoryId: "2",
     name: "Sequin Sweater",
     price: 84.99,
     image: "https://picsum.photos/id/226/500/500",
@@ -189,6 +216,7 @@ const sweaters = [
     description: "Sparkling sequin sweater for special occasions.",
   },
   {
+    categoryId: "2",
     name: "Metallic Sweater",
     price: 79.59,
     image: "https://picsum.photos/id/227/500/500",
@@ -196,6 +224,7 @@ const sweaters = [
     description: "Shiny metallic sweater for a bold look.",
   },
   {
+    categoryId: "2",
     name: "Color Block Sweater",
     price: 69.89,
     image: "https://picsum.photos/id/228/500/500",
@@ -203,11 +232,188 @@ const sweaters = [
     description: "Trendy color block sweater for a vibrant style.",
   },
   {
+    categoryId: "2",
     name: "Striped Sweater",
     price: 59.99,
     image: "https://picsum.photos/id/229/500/500",
     stock: 5,
     description: "Classic striped sweater for a casual look.",
+  },
+  {
+    categoryId: "2",
+    name: "Print Sweater",
+    price: 64.29,
+    image: "https://picsum.photos/id/230/500/500",
+    stock: 4,
+    description: "Bold print sweater for a standout style.",
+  },
+  {
+    categoryId: "2",
+    name: "Graphic Sweater",
+    price: 74.49,
+    image: "https://picsum.photos/id/231/500/500",
+    stock: 7,
+    description: "Stylish graphic sweater for a modern look.",
+  },
+  {
+    categoryId: "2",
+    name: "Textured Sweater",
+    price: 68.99,
+    image: "https://picsum.photos/id/232/500/500",
+    stock: 6,
+    description: "Unique textured sweater for added flair.",
+  },
+  {
+    categoryId: "2",
+    name: "Embroidered Sweater",
+    price: 79.99,
+    image: "https://picsum.photos/id/233/500/500",
+    stock: 5,
+    description: "Elegant embroidered sweater for a chic style.",
+  },
+  {
+    categoryId: "2",
+    name: "Tie-Dye Sweater",
+    price: 59.29,
+    image: "https://picsum.photos/id/234/500/500",
+    stock: 8,
+    description: "Colorful tie-dye sweater for a fun look.",
+  },
+  {
+    categoryId: "2",
+    name: "Plaid Sweater",
+    price: 64.79,
+    image: "https://picsum.photos/id/235/500/500",
+    stock: 3,
+    description: "Classic plaid sweater for a traditional style.",
+  },
+  {
+    categoryId: "2",
+    name: "Layered Sweater",
+    price: 74.59,
+    image: "https://picsum.photos/id/236/500/500",
+    stock: 7,
+    description: "Layered sweater for a unique and stylish look.",
+  },
+  {
+    categoryId: "2",
+    name: "Boucle Sweater",
+    price: 69.99,
+    image: "https://picsum.photos/id/237/500/500",
+    stock: 4,
+    description: "Soft boucle sweater for a cozy feel.",
+  },
+  {
+    categoryId: "2",
+    name: "Fuzzy Sweater",
+    price: 79.49,
+    image: "https://picsum.photos/id/238/500/500",
+    stock: 6,
+    description: "Warm and fuzzy sweater for ultimate comfort.",
+  },
+  {
+    categoryId: "2",
+    name: "Bell Sleeve Sweater",
+    price: 64.29,
+    image: "https://picsum.photos/id/239/500/500",
+    stock: 5,
+    description: "Stylish bell sleeve sweater for a trendy look.",
+  },
+  {
+    categoryId: "2",
+    name: "Slouchy Sweater",
+    price: 59.99,
+    image: "https://picsum.photos/id/240/500/500",
+    stock: 3,
+    description: "Casual slouchy sweater for a relaxed style.",
+  },
+  {
+    categoryId: "2",
+    name: "Peplum Sweater",
+    price: 69.79,
+    image: "https://picsum.photos/id/241/500/500",
+    stock: 7,
+    description: "Elegant peplum sweater for a chic look.",
+  },
+  {
+    categoryId: "2",
+    name: "Balloon Sleeve Sweater",
+    price: 74.89,
+    image: "https://picsum.photos/id/242/500/500",
+    stock: 6,
+    description: "Trendy balloon sleeve sweater for a modern style.",
+  },
+  {
+    categoryId: "2",
+    name: "Chevron Sweater",
+    price: 79.59,
+    image: "https://picsum.photos/id/243/500/500",
+    stock: 4,
+    description: "Stylish chevron sweater for a unique look.",
+  },
+  {
+    categoryId: "2",
+    name: "Ruffle Sweater",
+    price: 64.99,
+    image: "https://picsum.photos/id/244/500/500",
+    stock: 5,
+    description: "Elegant ruffle sweater for a feminine style.",
+  },
+  {
+    categoryId: "2",
+    name: "Lace Sweater",
+    price: 79.89,
+    image: "https://picsum.photos/id/245/500/500",
+    stock: 3,
+    description: "Stylish lace sweater for a chic look.",
+  },
+  {
+    categoryId: "2",
+    name: "Open Knit Sweater",
+    price: 59.49,
+    image: "https://picsum.photos/id/246/500/500",
+    stock: 7,
+    description: "Lightweight open knit sweater for layering.",
+  },
+  {
+    categoryId: "2",
+    name: "Hooded Sweater",
+    price: 69.29,
+    image: "https://picsum.photos/id/247/500/500",
+    stock: 6,
+    description: "Cozy hooded sweater for a casual style.",
+  },
+  {
+    categoryId: "2",
+    name: "Zippered Sweater",
+    price: 74.99,
+    image: "https://picsum.photos/id/248/500/500",
+    stock: 5,
+    description: "Versatile zippered sweater for layering.",
+  },
+  {
+    categoryId: "2",
+    name: "Draped Sweater",
+    price: 69.89,
+    image: "https://picsum.photos/id/249/500/500",
+    stock: 4,
+    description: "Elegant draped sweater for a chic look.",
+  },
+  {
+    categoryId: "2",
+    name: "Batwing Sweater",
+    price: 79.99,
+    image: "https://picsum.photos/id/250/500/500",
+    stock: 6,
+    description: "Trendy batwing sweater for a unique style.",
+  },
+  {
+    categoryId: "2",
+    name: "Cold Shoulder Sweater",
+    price: 59.79,
+    image: "https://picsum.photos/id/251/500/500",
+    stock: 3,
+    description: "Stylish cold shoulder sweater for a trendy look.",
   },
 ];
 

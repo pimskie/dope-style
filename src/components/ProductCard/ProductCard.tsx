@@ -22,7 +22,7 @@ const ProductCard = (props: Props) => {
   const { product, slug } = propsWithDefaults;
 
   return (
-    <Link href={`/shop/${slug}/${product.id}`} className={styles.cardLink}>
+    <Link href={`/shop/${slug}/${product.slug}`} className={styles.cardLink}>
       <div className={styles.card}>
         <div className={styles.cardImageContainer}>
           <img

@@ -1,4 +1,12 @@
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  getDoc,
+  limit,
+  query,
+  where,
+} from "firebase/firestore";
 import { database } from "@/utils/firebase/firebase";
 
 import type { Category, CategoryDocument } from "@/types/Category";
@@ -17,16 +25,22 @@ const category = {
     return categoryList;
   },
 
-  getById: async (id: string): Promise<Category | undefined> => {
-    const ref = doc(database, "categories", id);
-    const snap = await getDoc(ref);
+  getBySlug: async (slug: string): Promise<Category | undefined> => {
+    const categoriesCollection = collection(database, "categories");
+    const q = query(categoriesCollection, where("slug", "==", slug), limit(1));
 
-    return snap.exists()
-      ? ({
-          ...snap.data(),
-          id,
-        } as Category)
-      : undefined;
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+      return undefined;
+    }
+
+    const doc = querySnapshot.docs[0];
+
+    return {
+      id: doc.id,
+      ...(doc.data() as CategoryDocument),
+    };
   },
 };
 

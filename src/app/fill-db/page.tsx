@@ -1,34 +1,52 @@
 import { database } from "@/utils/firebase/firebase";
-import { collection, doc, setDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 
-import { caps } from "./caps";
 import { sweaters } from "./sweaters";
+import { baseballCaps } from "./caps";
+
+const createSlug = (name: string): string => {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)+/g, "");
+};
 
 // Function to add categories and products
-async function setupDatabase() {
-  const categories = [
-    {
-      name: "caps",
-      products: caps,
-    },
-    {
-      name: "sweaters",
-      products: sweaters,
-    },
-  ];
+// async function setupDatabase() {
+//   for (const product of sweaters) {
+//     const productRef = doc(collection(database, "products"));
+//     await setDoc(productRef, product);
+//   }
 
-  for (const category of categories) {
-    const categoryRef = doc(collection(database, "categories"), category.name);
-    // await setDoc(categoryRef, { name: category.name });
-
-    for (const product of category.products) {
-      const productRef = doc(collection(categoryRef, "products"));
-      await setDoc(productRef, product);
-    }
-  }
-}
+//   for (const product of baseballCaps) {
+//     const productRef = doc(collection(database, "products"));
+//     await setDoc(productRef, product);
+//   }
+// }
 
 // setupDatabase().catch(console.error);
+
+async function updateProductsWithSlug() {
+  const productsRef = collection(database, "products");
+  const querySnapshot = await getDocs(productsRef);
+
+  for (const docSnapshot of querySnapshot.docs) {
+    const productData = docSnapshot.data();
+    const slug = createSlug(productData.name);
+
+    await updateDoc(doc(database, "products", docSnapshot.id), { slug });
+  }
+
+  console.log("All products updated with slug field");
+}
+
+// updateProductsWithSlug();
 
 const FillDB = () => {
   return (

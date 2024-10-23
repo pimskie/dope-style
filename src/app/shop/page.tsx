@@ -1,5 +1,5 @@
 import CategoryList from "@/components/CategoryList/CategoryList";
-import Heading from "@/components/Heading/Heading";
+import Heading from "@/components/Typography/Heading/Heading";
 import { StoreService } from "@/services/store";
 
 export async function generateMetadata() {

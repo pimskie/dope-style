@@ -5,6 +5,7 @@ interface CategoryDocument {
   products?: Product[];
   leader: string;
   description: string;
+  slug: string;
 }
 
 interface Category extends CategoryDocument {

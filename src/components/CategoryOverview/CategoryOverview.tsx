@@ -31,7 +31,7 @@ const CategoryOverview = () => {
           {products?.map((product) => {
             return (
               <div className="overview__item" key={product.id}>
-                <ProductCard product={product} slug={category.name} />
+                <ProductCard product={product} slug={category.slug} />
               </div>
             );
           })}

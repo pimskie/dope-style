@@ -1,6 +1,6 @@
 import type { Category } from "@/types/Category";
 import CategoryCard from "@/components/CategoryCard/CategoryCard";
-import Heading from "../Heading/Heading";
+import Heading from "@/components/Typography/Heading/Heading";
 
 interface Props {
   categories: Array<Category>;
