@@ -3,14 +3,14 @@
   @apply z-10;
 }
 
-.visual {
+/* .visual {
   @apply fixed;
   @apply p-5;
   top: 20%;
   width: 200vw;
   height: 200vh;
 
-  @apply bg-gray-800;
+  background-color: red;
 
   left: -30%;
 
@@ -25,15 +25,25 @@
 
   animation-timeline: scroll(y nearest);
 
-  /* https://developer.mozilla.org/en-US/docs/Web/CSS/animation-range */
   animation-range: cover 0% 100%;
-}
+} */
 
-.visualTitle {
-  @apply text-white;
-  @apply text-4xl;
-  @apply font-bold;
-  @apply uppercase;
+.visual {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0);
+  @apply bg-slate-400 dark:bg-gray-900;
+
+  animation-name: positionAnimation;
+  animation-duration: 1ms;
+  animation-fill-mode: forwards;
+
+  animation-timeline: scroll(y nearest);
+
+  animation-range: cover 0% 100%;
 }
 
 @keyframes positionAnimation {
@@ -42,6 +52,6 @@
   }
 
   100% {
-    top: 30%;
+    top: 0%;
   }
 }

@@ -21,9 +21,7 @@ const AppContainer = ({ children }: { children?: React.ReactNode }) => {
           </CartProvider>
         </UserProvider>
       </div>
-      <div className={styles.visual}>
-        <div className={styles.visualTitle}>Dope</div>
-      </div>
+      <div className={styles.visual}></div>
     </div>
   );
 };
