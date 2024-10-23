@@ -1,0 +1,55 @@
+.navigation {
+  @apply flex flex-col p-4 bg-gray-900 dark:bg-gray-800;
+}
+
+.navigationItems {
+  @apply flex flex-col gap-4 mb-4;
+}
+
+.navigationLink {
+  @apply relative;
+  width: 110%;
+}
+
+.navigationLabel {
+  @apply text-gray-100;
+  @apply font-bold;
+  @apply uppercase;
+  @apply px-5;
+  @apply py-3;
+  @apply z-10;
+  @apply relative;
+}
+
+.navigationLabelBackground {
+  @apply absolute;
+  @apply top-0 left-0;
+  @apply h-full;
+  @apply bg-lime-600;
+  @apply opacity-0;
+
+  translate: -40px;
+
+  z-index: 1;
+
+  width: 100%;
+  transform: skew(-30deg);
+
+  transition: opacity 0.1s ease-in-out, translate 0.1s ease-in-out;
+}
+
+.navigationLink.active .navigationLabelBackground,
+.navigationLink:hover .navigationLabelBackground {
+  @apply opacity-100;
+  translate: -0px;
+}
+
+@screen md {
+  .navigation {
+    @apply flex-row justify-between items-center;
+  }
+
+  .navigationItems {
+    @apply flex-row gap-8 mb-0;
+  }
+}

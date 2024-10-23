@@ -28,7 +28,6 @@ h1 {
 .container {
   max-width: 80rem;
   margin-inline: auto;
-  @apply p-7;
 }
 
 .form-field {

@@ -47,7 +47,7 @@ const ProductDetail = ({ product }: { product: Product }) => {
             </div>
             <button
               onClick={onAddToCart}
-              className="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 transition-colors"
+              className="bg-lime-600 text-white px-6 py-2 rounded hover:bg-lime-800 transition-colors"
             >
               Add to Cart
             </button>

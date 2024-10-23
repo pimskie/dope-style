@@ -6,10 +6,11 @@
 .visual {
   @apply fixed;
   @apply p-5;
-  top: 90%;
+  top: 20%;
   width: 200vw;
   height: 200vh;
-  background-color: #272727;
+
+  @apply bg-gray-800;
 
   left: -30%;
 
