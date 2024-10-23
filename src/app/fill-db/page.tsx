@@ -1,31 +1,25 @@
 import { database } from "@/utils/firebase/firebase";
-
 import { collection, doc, setDoc } from "firebase/firestore";
+
+import { caps } from "./caps";
+import { sweaters } from "./sweaters";
 
 // Function to add categories and products
 async function setupDatabase() {
   const categories = [
     {
       name: "caps",
-      products: [
-        { name: "Baseball Cap", price: 19.99, stock: 50 },
-        { name: "Snapback Cap", price: 24.99, stock: 30 },
-        { name: "Beanie", price: 14.99, stock: 20 },
-      ],
+      products: caps,
     },
     {
       name: "sweaters",
-      products: [
-        { name: "Hoodie", price: 39.99, stock: 40 },
-        { name: "Crewneck Sweater", price: 34.99, stock: 25 },
-        { name: "Zip-up Hoodie", price: 44.99, stock: 15 },
-      ],
+      products: sweaters,
     },
   ];
 
   for (const category of categories) {
     const categoryRef = doc(collection(database, "categories"), category.name);
-    await setDoc(categoryRef, { name: category.name });
+    // await setDoc(categoryRef, { name: category.name });
 
     for (const product of category.products) {
       const productRef = doc(collection(categoryRef, "products"));

@@ -1,0 +1,65 @@
+.card {
+  @apply relative;
+  @apply overflow-hidden;
+}
+
+.cardImageContainer {
+  @apply w-full;
+  @apply aspect-square;
+  @apply overflow-hidden;
+}
+
+.cardImage {
+  @apply w-fit;
+  @apply transition-all; /* bleeeehh */
+  @apply duration-100;
+  @apply ease-out;
+}
+
+.cardContent {
+  @apply bg-sky-600;
+  @apply p-3;
+}
+
+.cardContent {
+  @apply flex;
+  @apply justify-between;
+}
+
+.cardContentName {
+  @apply font-bold;
+}
+
+.cardCta {
+  @apply absolute;
+  @apply z-10;
+  @apply left-1/2;
+  @apply top-1/2;
+
+  @apply p-3;
+
+  @apply bg-stone-50;
+  @apply bg-opacity-70;
+
+  @apply text-cyan-950;
+
+  @apply -translate-x-1/2;
+
+  @apply opacity-0;
+
+  @apply transition-all; /* bleeehh */
+  @apply duration-150;
+  @apply ease-out;
+}
+
+.cardLink:hover {
+  .cardImage {
+    @apply contrast-125;
+    @apply scale-105;
+  }
+
+  .cardCta {
+    @apply opacity-100;
+    @apply -translate-y-1/2;
+  }
+}

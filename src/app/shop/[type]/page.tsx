@@ -3,6 +3,7 @@ import CategoryOverview from "@/components/CategoryOverview/CategoryOverview";
 import CategoryProviderWrapper from "./CategoryProviderWrapper";
 
 import { notFound } from "next/navigation";
+import { ucfirst } from "@/utils/string/ucfirst";
 
 type Props = {
   params: { type: string };
@@ -10,20 +11,21 @@ type Props = {
 
 export async function generateMetadata({ params }: Props) {
   return {
-    title: params.type,
+    title: ucfirst(params.type),
   };
 }
 
 const Shop = async ({ params }: Props) => {
-  const fetchedCategory = await StoreService.category.getById(params.type);
+  const category = await StoreService.category.getById(params.type);
+  const products = await StoreService.product.getAll(params.type);
 
-  if (!fetchedCategory) {
+  if (!category) {
     return notFound();
   }
 
   return (
     <div>
-      <CategoryProviderWrapper category={fetchedCategory}>
+      <CategoryProviderWrapper category={category} products={products}>
         <CategoryOverview />
       </CategoryProviderWrapper>
     </div>

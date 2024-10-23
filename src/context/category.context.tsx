@@ -1,8 +1,11 @@
-import { Category } from "@/types/Category";
 import { createContext, useContext } from "react";
+
+import type { Category } from "@/types/Category";
+import type { Product } from "@/types/Product";
 
 interface CategoryContextType {
   category: Category;
+  products?: Product[];
 }
 
 const CategoryContext = createContext<CategoryContextType | null>(null);
