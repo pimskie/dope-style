@@ -1,12 +1,26 @@
 import Heading from "../Typography/Heading/Heading";
 import styles from "./Cart.module.css";
 
-const Cart = () => {
-  return (
-    <div>
-      <Heading Tag="h3" className={styles.cartHeading} />
+import { useCart } from "@/context/cart.context";
 
-      <div className={styles.cartContents}>Contents, yo</div>
+const Cart = () => {
+  const { items } = useCart();
+
+  const renderCartItems = () => {
+    return items.map((item) => (
+      <div key={item.product.id}>
+        {item.product.name} ({item.quantity})
+      </div>
+    ));
+  };
+
+  return (
+    <div className={styles.cart}>
+      <Heading Tag="h3" />
+
+      <div className={styles.cartContents}>
+        {items.length ? renderCartItems() : "No items in cart"}
+      </div>
     </div>
   );
 };

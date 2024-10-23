@@ -7,7 +7,8 @@ interface PopoverProps {
 }
 
 const Popover = ({ trigger, content }: PopoverProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
+
   const contentRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
