@@ -1,7 +1,7 @@
 import RegisterForm from "@/components/RegisterForm/RegisterForm";
 import SignInForm from "@/components/SignInForm/SignInForm";
 import SignInPopup from "@/components/SignInForm/SignInPopup";
-import Heading from "@/components/Heading/Heading";
+import Heading from "@/components/Typography/Heading/Heading";
 
 export async function generateMetadata() {
   return {

@@ -3,6 +3,8 @@ interface ProductDocument {
   price: number;
   stock: number;
   image: string;
+  slug: string;
+  description: string;
 }
 
 interface Product extends ProductDocument {

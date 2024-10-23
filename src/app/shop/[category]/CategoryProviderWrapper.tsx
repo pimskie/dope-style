@@ -7,7 +7,7 @@ import type { Product } from "@/types/Product";
 
 interface Props {
   category: Category;
-  products: Product[];
+  products: Product[] | undefined;
   children: React.ReactNode;
 }
 

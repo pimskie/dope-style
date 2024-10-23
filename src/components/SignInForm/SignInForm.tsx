@@ -8,7 +8,7 @@ import VerticalStack from "@/components/Layout/Stack/VerticalStack";
 import Error from "@/components/Error/Error";
 
 import type { SignInFields } from "@/types/SignInFields";
-import Heading from "../Heading/Heading";
+import Heading from "@/components/Typography/Heading/Heading";
 
 const defaultFormFields: SignInFields = {
   email: process.env.NEXT_PUBLIC_EMAIL_ADDRESS!,
