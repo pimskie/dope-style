@@ -1,0 +1,14 @@
+.content {
+  @apply absolute;
+  @apply right-0;
+  @apply rounded-md;
+  @apply shadow-md;
+  @apply bg-white;
+  @apply dark:bg-gray-900;
+  @apply z-10;
+  @apply border;
+  @apply border-gray-200;
+  @apply dark:border-gray-600;
+  @apply p-4;
+  @apply w-80;
+}
