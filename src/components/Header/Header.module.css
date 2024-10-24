@@ -1,3 +1,11 @@
 .header {
   @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white py-4;
 }
+
+.headerInner {
+  @apply flex justify-between items-center;
+}
+
+.headerPopover {
+  @apply relative;
+}

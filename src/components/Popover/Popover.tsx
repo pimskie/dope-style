@@ -7,9 +7,10 @@ interface PopoverProps {
 }
 
 const Popover = ({ trigger, content }: PopoverProps) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const contentRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -21,7 +22,7 @@ const Popover = ({ trigger, content }: PopoverProps) => {
     };
 
     if (isOpen) {
-      document.addEventListener("mousedown", handleClickOutside);
+      // document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
@@ -30,6 +31,7 @@ const Popover = ({ trigger, content }: PopoverProps) => {
   }, [isOpen]);
 
   const onToggle = () => setIsOpen(!isOpen);
+
   return (
     <div className="relative">
       <button onClick={onToggle}>{trigger}</button>

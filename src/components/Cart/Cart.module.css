@@ -1,13 +1,6 @@
 .cart {
-  @apply p-5;
-  @apply max-w-96;
-  @apply bg-slate-700;
-  @apply text-white;
-  @apply rounded-md;
+  container-type: inline-size;
 }
 
 .cartContents {
-  @apply flex;
-  @apply flex-col;
-  @apply gap-3;
 }

@@ -1,14 +1,13 @@
-import { Product } from "@/types/Product";
-import { createContext, useContext, useState } from "react";
+"use client";
 
-interface CartItem {
-  product: Product;
-  quantity: number;
-}
+import type { CartItem } from "@/types/CartItem";
+import { createContext, useContext, useState } from "react";
 
 interface CartContextType {
   items: CartItem[];
   addItem: (item: CartItem) => void;
+  updateQuantity: (item: CartItem, quantity: number) => void;
+  removeItem: (item: CartItem) => void;
 }
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -34,8 +33,28 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setCart(combinedItems);
   };
 
+  const updateQuantity = (item: CartItem, quantity: number) => {
+    const existingItem = items.find((i) => i.product.id === item.product.id);
+
+    if (existingItem) {
+      existingItem.quantity = quantity;
+    } else {
+      items.push(item);
+    }
+
+    setCart([...items]);
+  };
+
+  const removeItem = (item: CartItem) => {
+    const filteredItems = items.filter((i) => i.product.id !== item.product.id);
+
+    setCart([...filteredItems]);
+  };
+
   return (
-    <CartContext.Provider value={{ items, addItem }}>
+    <CartContext.Provider
+      value={{ items, addItem, updateQuantity, removeItem }}
+    >
       {children}
     </CartContext.Provider>
   );

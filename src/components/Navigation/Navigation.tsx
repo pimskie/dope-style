@@ -5,10 +5,6 @@ import { usePathname } from "next/navigation";
 import { useContext, useState } from "react";
 import { UserContext } from "@/context/user.context";
 import { signOutUser } from "@/utils/firebase/authentication";
-import Cart from "@/components/Cart/Cart";
-import Popover from "@/components/Popover/Popover";
-
-import { useCart } from "@/context/cart.context";
 
 import styles from "./Navigation.module.css";
 
@@ -20,9 +16,6 @@ const links = [
 const Navigation = () => {
   const pathname = usePathname();
   const { currentUser } = useContext(UserContext);
-  const [isCartOpen, setIsCartOpen] = useState<Boolean>(false);
-
-  const { items } = useCart();
 
   const onSignOutClicked = async () => {
     await signOutUser();
@@ -55,8 +48,6 @@ const Navigation = () => {
             Sign in
           </Link>
         )}
-
-        <Popover trigger={`Cart (${items.length})`} content={<Cart />} />
       </div>
     </nav>
   );

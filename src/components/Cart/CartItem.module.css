@@ -1,0 +1,68 @@
+.cartItem {
+  display: grid;
+  row-gap: 1rem;
+  column-gap: 1.5rem;
+  padding: 1rem;
+
+  @apply bg-gray-950;
+  @apply rounded-sm;
+
+  grid-template-areas:
+    "name name remove"
+    "quantity totalPrice totalPrice";
+}
+
+.cartItemName {
+  grid-area: name;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.cartItemImage {
+  grid-area: image;
+  display: none;
+}
+
+.cartItemQuantity {
+  grid-area: quantity;
+}
+
+.cartItemQuantityUpdate {
+  grid-area: quantityUpdate;
+  display: none;
+}
+
+.cartItemPrice {
+  grid-area: totalPrice;
+}
+
+.cartItemRemove {
+  grid-area: remove;
+}
+
+@container (min-width: 20rem) {
+  .cartItem {
+    grid-template-areas: "image name name quantityUpdate totalPrice remove";
+    align-items: center;
+    padding: 0;
+    border: none;
+  }
+
+  .cartItemName {
+    @apply text-2xl;
+  }
+
+  .cartItemImage {
+    display: block;
+    max-width: 10rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .cartItemQuantity {
+    display: none;
+  }
+  .cartItemQuantityUpdate {
+    display: initial;
+  }
+}

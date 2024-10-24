@@ -3,15 +3,20 @@ import styles from "./Cart.module.css";
 
 import { useCart } from "@/context/cart.context";
 
+import CartItem from "./CartItem";
+import VerticalStack from "@/components/Layout/Stack/VerticalStack";
+
 const Cart = () => {
   const { items } = useCart();
 
   const renderCartItems = () => {
-    return items.map((item) => (
-      <div key={item.product.id}>
-        {item.product.name} ({item.quantity})
-      </div>
-    ));
+    return (
+      <VerticalStack>
+        {items.map((item) => (
+          <CartItem key={item.product.id} item={item} />
+        ))}
+      </VerticalStack>
+    );
   };
 
   return (
