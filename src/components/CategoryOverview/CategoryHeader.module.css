@@ -1,0 +1,42 @@
+.header {
+  @apply grid;
+  @apply gap-4;
+  @apply items-center;
+
+  grid-template-areas:
+    "title"
+    "desc";
+}
+
+.headerImage {
+  @apply hidden;
+  grid-area: image;
+}
+
+.headerTitle {
+  grid-area: title;
+}
+
+.headerDescription {
+  grid-area: desc;
+}
+
+@container overview (min-width: 40rem) {
+  .header {
+    grid-template-areas:
+      "title title title title"
+      "image desc desc desc";
+  }
+
+  .headerImage {
+    @apply block;
+  }
+}
+
+@container overview (min-width: 50rem) {
+  .header {
+    grid-template-areas:
+      "title title title title"
+      "image image desc desc";
+  }
+}

@@ -3,11 +3,22 @@ import styles from "./Cart.module.css";
 
 import { useCart } from "@/context/cart.context";
 
+import { formatCurrency } from "@/utils/intl/formatNumber";
+
 import CartItem from "./CartItem";
 import VerticalStack from "@/components/Layout/Stack/VerticalStack";
 
 const Cart = () => {
-  const { items } = useCart();
+  const { items, cartTotalPrice } = useCart();
+
+  const renderCart = () => {
+    return (
+      <div>
+        {renderCartItems()}
+        <div>Total price: {formatCurrency(cartTotalPrice)}</div>
+      </div>
+    );
+  };
 
   const renderCartItems = () => {
     return (
@@ -24,7 +35,7 @@ const Cart = () => {
       <Heading Tag="h3" />
 
       <div className={styles.cartContents}>
-        {items.length ? renderCartItems() : "No items in cart"}
+        {items.length ? renderCart() : "No items in cart"}
       </div>
     </div>
   );
