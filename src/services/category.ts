@@ -14,7 +14,6 @@ import type { Category, CategoryDocument } from "@/types/Category";
 const category = {
   getAll: async () => {
     const categoriesCollection = collection(database, "categories");
-
     const categorySnapshot = await getDocs(categoriesCollection);
 
     const categoryList: Category[] = categorySnapshot.docs.map((doc) => ({
