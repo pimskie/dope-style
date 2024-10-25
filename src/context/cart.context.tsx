@@ -1,13 +1,14 @@
 "use client";
 
 import type { CartItem } from "@/types/CartItem";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface CartContextType {
   items: CartItem[];
   addItem: (item: CartItem) => void;
   updateQuantity: (item: CartItem, quantity: number) => void;
   removeItem: (item: CartItem) => void;
+  cartTotalPrice: number;
 }
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -26,6 +27,15 @@ const combineProducts = (items: CartItem[], item: CartItem) => {
 
 const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [items, setCart] = useState<CartItem[]>([]);
+  const [cartTotalPrice, setCartTotalPrice] = useState(0);
+
+  useEffect(() => {
+    const totalPrice = items.reduce((acc, item) => {
+      return acc + item.product.price * item.quantity;
+    }, 0);
+
+    setCartTotalPrice(totalPrice);
+  }, [items]);
 
   const addItem = (item: CartItem) => {
     const combinedItems = combineProducts([...items], item);
@@ -53,7 +63,7 @@ const CartProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <CartContext.Provider
-      value={{ items, addItem, updateQuantity, removeItem }}
+      value={{ items, addItem, updateQuantity, removeItem, cartTotalPrice }}
     >
       {children}
     </CartContext.Provider>
