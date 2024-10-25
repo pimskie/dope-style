@@ -22,11 +22,9 @@ const Shop = async ({ params }: Props) => {
     return notFound();
   }
 
-  const products = await StoreService.product.getByCategoryId(category.id);
-
   return (
     <div>
-      <CategoryProviderWrapper category={category} products={products}>
+      <CategoryProviderWrapper category={category}>
         <CategoryOverview />
       </CategoryProviderWrapper>
     </div>
