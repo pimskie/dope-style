@@ -1,41 +1,21 @@
 "use client";
 import { useCategory } from "@/context/category.context";
-import Leader from "@/components/Typography/Leader/Leader";
-import ProductCard from "@/components/ProductCard/ProductCard";
-import { ucfirst } from "@/utils/string/ucfirst";
-
 import styles from "./CategoryOverview.module.css";
 import VerticalStack from "../Layout/Stack/VerticalStack";
+import { CategoryHeader } from "./CategoryHeader";
+import ProductList from "../ProductList/ProductList";
+import { useMemo } from "react";
 
 const CategoryOverview = () => {
   const { category, products } = useCategory();
+  const memoizedProducts = useMemo(() => products, [products]);
 
   return (
     <div className={styles.overview}>
       <VerticalStack>
-        <div className={styles.header}>
-          <h1 className={styles.headerTitle}>{ucfirst(category.name)}</h1>
+        <CategoryHeader category={category} />
 
-          <img
-            className={styles.headerImage}
-            src={category.image}
-            alt={`An image of ${category.name}`}
-          />
-          <div className={styles.headerDescription}>
-            <Leader>{category.leader}</Leader>
-            <p className="description">{category.description}</p>
-          </div>
-        </div>
-
-        <section className={styles.productList}>
-          {products?.map((product) => {
-            return (
-              <div className="overview__item" key={product.id}>
-                <ProductCard product={product} slug={category.slug} />
-              </div>
-            );
-          })}
-        </section>
+        <ProductList products={memoizedProducts} categorySlug={category.slug} />
       </VerticalStack>
     </div>
   );

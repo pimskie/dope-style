@@ -1,0 +1,7 @@
+.productList {
+  @apply grid;
+  @apply gap-4;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+  @apply lg:gap-6;
+}
