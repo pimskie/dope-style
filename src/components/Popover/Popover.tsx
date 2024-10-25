@@ -22,7 +22,7 @@ const Popover = ({ trigger, content }: PopoverProps) => {
     };
 
     if (isOpen) {
-      // document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
