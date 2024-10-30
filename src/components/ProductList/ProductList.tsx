@@ -11,12 +11,14 @@ interface ProductListProps {
   isLoading: boolean;
 }
 
-const renderLoading = (height: number = 400) => {
+const renderLoading = () => {
   return (
     <Fragment>
-      <Skeleton className={`w-full h-[${height}px]`} />
-      <Skeleton className={`w-full h-[${height}px]`} />
-      <Skeleton className={`w-full h-[${height}px]`} />
+      <Skeleton className={`w-full h-52 md:h-96`} />
+      <Skeleton className={`w-full h-52 md:h-96`} />
+      <Skeleton className={`w-full h-52 md:h-96`} />
+      <Skeleton className={`w-full h-52 md:h-96`} />
+      <Skeleton className={`w-full h-52 md:h-96`} />
     </Fragment>
   );
 };

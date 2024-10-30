@@ -10,13 +10,14 @@ const ProductDetailPage = async ({
   params: { product: productSlug },
 }: Props) => {
   try {
-    const product = await StoreService.product.where([
-      {
-        field: "slug",
-        operator: "==",
-        value: productSlug,
-      },
-    ]);
+    const [product] =
+      (await StoreService.product.where([
+        {
+          field: "slug",
+          operator: "==",
+          value: productSlug,
+        },
+      ])) || [];
 
     if (!product) {
       return notFound();
