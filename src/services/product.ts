@@ -60,7 +60,7 @@ const product = {
       return undefined;
     }
 
-    return snapshotToProductList(querySnapshot)[0];
+    return snapshotToProductList(querySnapshot);
   },
 };
 

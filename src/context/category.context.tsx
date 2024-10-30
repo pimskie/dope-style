@@ -5,7 +5,6 @@ import type { Product } from "@/types/Product";
 
 interface CategoryContextType {
   category: Category;
-  products?: Product[];
 }
 
 const CategoryContext = createContext<CategoryContextType | null>(null);
