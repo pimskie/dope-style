@@ -1,3 +1,7 @@
-.categoriesContainer {
-  @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4;
+.categoriesList {
+  @apply grid;
+  @apply gap-4;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+  @apply lg:gap-6;
 }

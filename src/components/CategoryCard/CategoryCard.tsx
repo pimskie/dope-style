@@ -9,7 +9,7 @@ const CategoryCard = ({ name, image, slug }: Category) => {
         <img
           src={image}
           alt={`Image of ${name}`}
-          className="absolute top-0 left-0"
+          className="absolute top-0 left-0 w-full"
         />
 
         <div className="relative z-10">

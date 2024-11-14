@@ -3,6 +3,9 @@
   @apply z-10;
 }
 
+.main {
+  @apply py-4;
+}
 /* .visual {
   @apply fixed;
   @apply p-5;

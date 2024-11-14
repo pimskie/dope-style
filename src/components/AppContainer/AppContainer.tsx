@@ -1,12 +1,11 @@
 "use client";
-import { UserProvider } from "@/context/user.context";
 import Navigation from "@/components/Navigation/Navigation";
 
 import Breadcrumbs from "@/components/Breadcrumbs/Breadcrumbs";
 import Header from "@/components/Header/Header";
 import styles from "./AppContainer.module.css";
 
-import { CartProvider, useCart } from "@/context/cart.context";
+import { useCart } from "@/context/cart.context";
 import Popover from "@/components/Popover/Popover";
 import Cart from "@/components/Cart/Cart";
 import Link from "next/link";
@@ -31,9 +30,13 @@ const AppContainer = ({ children }: { children?: React.ReactNode }) => {
           }
         />
 
-        <Breadcrumbs homeElement="Home" separator="|" />
+        <div className="container">
+          <Breadcrumbs homeElement="Home" separator="|" />
+        </div>
 
-        <div className="container">{children}</div>
+        <main className={styles.main}>
+          <div className="container">{children}</div>
+        </main>
       </div>
       <div className={styles.visual}></div>
     </div>

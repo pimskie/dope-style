@@ -3,9 +3,17 @@
 }
 
 .headerInner {
-  @apply flex justify-between items-center;
+  @apply flex;
+  @apply flex-col;
+  @apply items-center;
 }
 
 .headerPopover {
   @apply relative;
+}
+
+.headerNavigation {
+  @apply flex;
+  @apply justify-between;
+  @apply items-center;
 }

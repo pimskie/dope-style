@@ -1,4 +1,6 @@
 import styles from "./Header.module.css";
+
+import Logo from "@/components/Logo/Logo";
 interface HeaderProps {
   navigation: React.ReactNode;
   popover: React.ReactNode;
@@ -9,8 +11,11 @@ const Header = ({ navigation, popover }: HeaderProps) => {
     <header className={styles.header}>
       <div className="container">
         <div className={styles.headerInner}>
-          <div className={styles.headerNavigation}>{navigation}</div>
-          <div className={styles.headerPopover}>{popover}</div>
+          <Logo />
+          <div className={styles.headerNavigation}>
+            <div className={styles.headerNavigation}>{navigation}</div>
+            <div className={styles.headerPopover}>{popover}</div>
+          </div>
         </div>
       </div>
     </header>
