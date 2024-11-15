@@ -4,6 +4,7 @@ import { Product } from "@/types/Product";
 import styles from "./ProductList.module.css";
 import ProductCard from "@/components/ProductCard/ProductCard";
 import { Fragment } from "react";
+import { useTranslations } from "use-intl";
 
 interface ProductListProps {
   products: Product[] | undefined;
@@ -25,17 +26,20 @@ const renderLoading = () => {
 
 const renderProductList = (
   products: Product[] | undefined,
-  categorySlug: string
+  categorySlug: string,
+  noResultsText: string
 ) => {
-  return products && products.length
-    ? products?.map((product) => {
-        return (
-          <div className="overview__item" key={product.id}>
-            <ProductCard product={product} slug={categorySlug} />
-          </div>
-        );
-      })
-    : "No products found";
+  return products && products.length ? (
+    products?.map((product) => {
+      return (
+        <div className="overview__item" key={product.id}>
+          <ProductCard product={product} slug={categorySlug} />
+        </div>
+      );
+    })
+  ) : (
+    <div>{noResultsText}</div>
+  );
 };
 
 const ProductList = ({
@@ -43,9 +47,13 @@ const ProductList = ({
   categorySlug,
   isLoading,
 }: ProductListProps) => {
+  const t = useTranslations("products");
+
   return (
     <section className={styles.productList}>
-      {isLoading ? renderLoading() : renderProductList(products, categorySlug)}
+      {isLoading
+        ? renderLoading()
+        : renderProductList(products, categorySlug, t("noResults"))}
     </section>
   );
 };

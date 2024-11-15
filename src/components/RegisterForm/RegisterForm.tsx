@@ -9,6 +9,7 @@ import Error from "@/components/Error/Error";
 import { useFormState } from "react-dom";
 import { useState } from "react";
 import { ValidationStatus } from "@/types/ValidationStatus";
+import { useTranslations, useLocale } from "next-intl";
 
 const defaultFormFields = {
   displayName: "pimskie",
@@ -26,6 +27,8 @@ const renderError = (error?: ValidationStatus, children?: React.ReactNode) => {
 };
 
 const SignInForm = () => {
+  const t = useTranslations("authentication");
+
   const [serverActionError, formAction] = useFormState(handleRegister, null);
 
   const [formFields, setFormFields] = useState(defaultFormFields);
@@ -57,7 +60,7 @@ const SignInForm = () => {
         <VerticalStack>
           <div className="form-field">
             <label htmlFor="displayName" className="form-label">
-              Display name
+              {t("displayName")}
             </label>
             <input
               className="form-input"
@@ -72,7 +75,7 @@ const SignInForm = () => {
 
           <div className="form-field">
             <label htmlFor="email" className="form-label">
-              Email address
+              {t("emailAddress")}
             </label>
             <input
               className="form-input"
@@ -86,7 +89,7 @@ const SignInForm = () => {
 
           <div className="form-field">
             <label htmlFor="password" className="form-label">
-              Password
+              {t("password")}
             </label>
             <input
               className="form-input"
@@ -101,7 +104,7 @@ const SignInForm = () => {
 
           <div className="form-field">
             <label htmlFor="confirmPassword" className="form-label">
-              Password confirm
+              {t("passwordConfirm")}
             </label>
             <input
               className="form-input"
@@ -113,7 +116,7 @@ const SignInForm = () => {
               onChange={onFieldChanged}
             />
           </div>
-          <button type="submit">Create account</button>
+          <button type="submit">{t("createAccount")}</button>
         </VerticalStack>
       </form>
     </div>

@@ -1,0 +1,58 @@
+{
+  "HomePage": {
+    "title": "Dope Style",
+    "tagline": "Graffiti to Garments",
+    "welcome": "Welkom bij Dope Style",
+    "intro": "Welkom bij Dope Style, waar het straatleven de mode ontmoet. Onze collectie brengt een eerbetoon aan de straten, met stoere streetwear, duurzame skatewear en eersteklas graffiti-benodigdheden die jouw unieke stijl definiëren. Of je nu over het trottoir loopt of je volgende meesterwerk creëert, Dope Style heeft je gedekt. Omarm de cultuur, val op en maak je markering met Dope Style."
+  },
+
+  "sections": {
+    "featured": "Uitgelichte Producten",
+    "new": "Nieuwe Aankomsten",
+    "popular": "Populaire Producten",
+    "categories": "Categorieën"
+  },
+  "cta": {
+    "showMore": "Toon meer",
+    "seeMore": "Bekijk"
+  },
+  "authentication": {
+    "signIn": "Inloggen",
+    "signOut": "Uitloggen",
+    "signUpSucces": "Oke dan, dat is gelukt!",
+    "createAccount": "Create account",
+    "password": "Password",
+    "passwordConfirm": "Confirm password",
+    "displayName": "Display name",
+    "emailAddress": "Email address",
+    "login": "Login",
+    "register": "register"
+  },
+
+  "cart": {
+    "cart": "Winkelwagen",
+    "order": "Bestelling",
+    "pay": "Betalen",
+    "add": "Voeg toe aan winkelwagen",
+    "empty": "Je winkelwagen is leeg",
+    "view": "bekijk je winkelwagen",
+    "totalPrice": "Totaal bedrag"
+  },
+
+  "category": {
+    "caps": {
+      "leader": "Maak je look af met stijl en veelzijdigheid.",
+      "description": "Onze premium baseballpetten combineren comfort en duurzaamheid, perfect voor elk avontuur of casual uitje. Gemaakt van hoogwaardige materialen, bieden ze een nauwsluitende pasvorm terwijl ze je koel en in de schaduw houden. Verkrijgbaar in verschillende kleuren en ontwerpen, zijn deze petten een must-have accessoire om je garderobe aan te vullen. Of je nu het veld op gaat, een wandeling maakt of gewoon een modieuze statement wilt maken, onze baseballpetten zijn de ideale keuze om je stijlvol en beschermd te houden."
+    },
+    "sweaters": {
+      "leader": "Wikkel jezelf in warmte en elegantie.",
+      "description": "Onze luxe truien zijn ontworpen om je gezellig en chic te houden door elk seizoen. Gemaakt van de beste materialen, bieden ze ongeëvenaarde zachtheid en duurzaamheid, zodat je comfortabel en stijlvol blijft. Met een scala aan klassieke en eigentijdse stijlen zijn deze truien perfect om te dragen of als op zichzelf staand stuk. Of je nu thuis op de bank ligt, naar kantoor gaat of een avondje uit geniet, onze truien zijn de ultieme mix van comfort en verfijning."
+    }
+  },
+  "categories": {
+    "title": "Categorieen"
+  },
+  "products": {
+    "noResults": "Geen producten gevonden"
+  }
+}

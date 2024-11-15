@@ -1,11 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useCart } from "@/context/cart.context";
 import Heading from "@/components/Typography/Heading/Heading";
 import { Product } from "@/types/Product";
+import type { Locale } from "@/types/Locale";
+import { useTranslations } from "next-intl";
 
-const ProductDetail = ({ product }: { product: Product }) => {
+import { defaultLocale } from "@/config/locales";
+
+type Props = {
+  product: Product;
+  locale: Locale;
+};
+
+const ProductDetail = ({ product, locale = defaultLocale }: Props) => {
+  const t = useTranslations();
+
   const [quantity, setQuantity] = useState(1);
   const { addItem } = useCart();
 
@@ -17,6 +28,8 @@ const ProductDetail = ({ product }: { product: Product }) => {
   const onAddToCart = () => {
     addItem({ product, quantity });
   };
+
+  const description = product.description[locale] || product.description.en;
 
   return (
     <div className="container mx-auto px-4">
@@ -33,7 +46,7 @@ const ProductDetail = ({ product }: { product: Product }) => {
         <div className="md:w-1/2">
           <Heading>{product.name}</Heading>
 
-          <p className="text-gray-700 mb-6">{product.description}</p>
+          <p className="text-white mb-6">{description}</p>
           <div className="flex flex-col space-y-4">
             <div className="form-field">
               <input
@@ -49,7 +62,7 @@ const ProductDetail = ({ product }: { product: Product }) => {
               onClick={onAddToCart}
               className="bg-lime-600 text-white px-6 py-2 rounded hover:bg-lime-800 transition-colors"
             >
-              Add to Cart
+              {t("cart.add")}
             </button>
           </div>
         </div>

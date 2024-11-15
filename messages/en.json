@@ -1,0 +1,58 @@
+{
+  "HomePage": {
+    "title": "Dope Style",
+    "tagline": "Graffiti to Garments",
+    "welcome": "Welcome to Dope Style",
+    "intro": "Welcome to Dope Style, where street life meets fashion. Our collection pays homage to the streets, with edgy streetwear, sustainable skatewear, and top-notch graffiti supplies that define your unique style. Whether you're hitting the pavement or creating your next masterpiece, Dope Style has got you covered. Embrace the culture, stand out, and make your mark with Dope Style."
+  },
+
+  "sections": {
+    "featured": "Featured Products",
+    "new": "New Arrivals",
+    "popular": "Popular Products",
+    "categories": "Categories"
+  },
+  "cta": {
+    "showMore": "Show more",
+    "seeMore": "See more"
+  },
+  "authentication": {
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "signUpSucces": "Yes yes, you signed up!",
+    "createAccount": "Create account",
+    "password": "Password",
+    "passwordConfirm": "Confirm password",
+    "displayName": "Display name",
+    "emailAddress": "Email address",
+    "login": "Login",
+    "register": "register"
+  },
+
+  "cart": {
+    "cart": "Cart",
+    "order": "Order",
+    "pay": "Pay",
+    "add": "Add to cart",
+    "empty": "No items in your cart",
+    "view": "View your cart",
+    "totalPrice": "Total price"
+  },
+
+  "category": {
+    "caps": {
+      "leader": "Top off your look with style and versatility.",
+      "description": "Our premium baseball caps combine comfort and durability, perfect for any adventure or casual outing. Crafted from high-quality materials, they offer a snug fit while keeping you cool and shaded. Available in a variety of colors and designs, these caps are a must-have accessory to complement your wardrobe. Whether you're hitting the field, going for a stroll, or just looking to make a fashion statement, our baseball caps are the ideal choice to keep you stylish and protected."
+    },
+    "sweaters": {
+      "leader": "Wrap yourself in warmth and elegance.",
+      "description": "Our luxurious sweaters are designed to keep you cozy and chic through every season. Made from the finest materials, they offer unparalleled softness and durability, ensuring you stay comfortable and stylish. With a range of classic and contemporary styles, these sweaters are perfect for layering or as a standalone piece. Whether you're lounging at home, heading to the office, or enjoying a night out, our sweaters are the ultimate blend of comfort and sophistication."
+    }
+  },
+  "categories": {
+    "title": "Categories"
+  },
+  "products": {
+    "noResults": "No products found"
+  }
+}

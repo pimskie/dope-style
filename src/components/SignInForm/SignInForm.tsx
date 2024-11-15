@@ -9,6 +9,7 @@ import Error from "@/components/Error/Error";
 
 import type { SignInFields } from "@/types/SignInFields";
 import Heading from "@/components/Typography/Heading/Heading";
+import { useTranslations } from "next-intl";
 
 const defaultFormFields: SignInFields = {
   email: process.env.NEXT_PUBLIC_EMAIL_ADDRESS!,
@@ -20,6 +21,8 @@ const renderError = (message?: string) => {
 };
 
 const SignInForm = () => {
+  const t = useTranslations("authentication");
+
   const [formFields, setFormFields] = useState<SignInFields>(defaultFormFields);
   const [signInFeedback, formHandler] = useFormState(handleSignIn, null);
 
@@ -49,7 +52,7 @@ const SignInForm = () => {
           {renderError(signInFeedback?.message)}
           <div className="form-field">
             <label htmlFor="email" className="form-label">
-              Email
+              {t("emailAddress")}
             </label>
             <input
               type="email"
@@ -64,7 +67,7 @@ const SignInForm = () => {
 
           <div className="form-field">
             <label htmlFor="password-signin" className="form-label">
-              Password
+              {t("password")}
             </label>
             <input
               type="password"
@@ -77,7 +80,7 @@ const SignInForm = () => {
             />
           </div>
 
-          <button type="submit">Log in</button>
+          <button type="submit">{t("login")}</button>
         </VerticalStack>
       </form>
     </div>
