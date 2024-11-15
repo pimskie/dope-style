@@ -1,8 +1,12 @@
 import { Category } from "@/types/Category";
 import "./CategoryCard.styles.css";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+
+import { useTranslations } from "next-intl";
 
 const CategoryCard = ({ name, image, slug }: Category) => {
+  const translations = useTranslations("cta");
+
   return (
     <Link href={`/shop/${slug.toLocaleLowerCase()}`}>
       <div className="w-full aspect-square relative flex p-4 items-end">
@@ -14,7 +18,9 @@ const CategoryCard = ({ name, image, slug }: Category) => {
 
         <div className="relative z-10">
           <h2 className="category-card__title">{name}</h2>
-          <div className="category-card__body cursor-pointer">Show more</div>
+          <div className="category-card__body cursor-pointer">
+            {translations("showMore")}
+          </div>
         </div>
       </div>
     </Link>

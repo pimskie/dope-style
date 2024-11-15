@@ -18,33 +18,33 @@ const createSlug = (name: string): string => {
 };
 
 // Function to add categories and products
-// async function setupDatabase() {
-//   for (const product of sweaters) {
-//     const productRef = doc(collection(database, "products"));
-//     await setDoc(productRef, product);
-//   }
+async function setupDatabase() {
+  // for (const product of sweaters) {
+  //   const productRef = doc(collection(database, "products"));
+  //   await setDoc(productRef, product);
+  // }
 
-//   for (const product of baseballCaps) {
-//     const productRef = doc(collection(database, "products"));
-//     await setDoc(productRef, product);
-//   }
-// }
+  for (const product of baseballCaps) {
+    const productRef = doc(collection(database, "products"));
+    await setDoc(productRef, product);
+  }
+}
 
 // setupDatabase().catch(console.error);
 
-async function updateProductsWithSlug() {
-  const productsRef = collection(database, "products");
-  const querySnapshot = await getDocs(productsRef);
+// async function updateProductsWithSlug() {
+//   const productsRef = collection(database, "products");
+//   const querySnapshot = await getDocs(productsRef);
 
-  for (const docSnapshot of querySnapshot.docs) {
-    const productData = docSnapshot.data();
-    const slug = createSlug(productData.name);
+//   for (const docSnapshot of querySnapshot.docs) {
+//     const productData = docSnapshot.data();
+//     const slug = createSlug(productData.name);
 
-    await updateDoc(doc(database, "products", docSnapshot.id), { slug });
-  }
+//     await updateDoc(doc(database, "products", docSnapshot.id), { slug });
+//   }
 
-  console.log("All products updated with slug field");
-}
+//   console.log("All products updated with slug field");
+// }
 
 // updateProductsWithSlug();
 

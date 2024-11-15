@@ -1,8 +1,10 @@
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 import { formatCurrency } from "@/utils/intl/formatNumber";
 import styles from "./ProductCard.module.css";
 import type { Product } from "@/types/Product";
+
+import { useTranslations } from "next-intl";
 
 interface Props {
   product: Product;
@@ -14,6 +16,8 @@ const defaultProps: Partial<Props> = {
 };
 
 const ProductCard = (props: Props) => {
+  const t = useTranslations("cta");
+
   const propsWithDefaults: Props = {
     ...defaultProps,
     ...props,
@@ -43,7 +47,7 @@ const ProductCard = (props: Props) => {
         </div>
 
         <div className={styles.cardCta}>
-          <span>See more</span>
+          <span>{t("seeMore")}</span>
         </div>
       </div>
     </Link>

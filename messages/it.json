@@ -1,0 +1,58 @@
+{
+  "HomePage": {
+    "title": "Dope Style",
+    "tagline": "Dal Graffiti ai Vestiti",
+    "welcome": "Benvenuti a Dope Style",
+    "intro": "Benvenuti a Dope Style, dove la vita di strada incontra la moda. La nostra collezione rende omaggio alle strade, con abbigliamento streetwear audace, abbigliamento da skate sostenibile e forniture di graffiti di alta qualità che definiscono il tuo stile unico. Sia che tu stia percorrendo il marciapiede o creando il tuo prossimo capolavoro, Dope Style ha tutto ciò di cui hai bisogno. Abbraccia la cultura, distinguiti e lascia il tuo segno con Dope Style."
+  },
+
+  "sections": {
+    "featured": "Prodotti in Evidenza",
+    "new": "Nuove Arrivi",
+    "popular": "Prodotti Popolari",
+    "categories": "Categorie"
+  },
+  "cta": {
+    "showMore": "Mostra di più",
+    "seeMore": "Vedi di più"
+  },
+  "authentication": {
+    "signIn": "Accedi",
+    "signOut": "Esci",
+    "signUpSucces": "Si si, you signed up!",
+    "createAccount": "Create account",
+    "password": "Password",
+    "passwordConfirm": "Confirm password",
+    "displayName": "Display name",
+    "emailAddress": "Email address",
+    "login": "Login",
+    "register": "register"
+  },
+
+  "cart": {
+    "cart": "Carrello",
+    "order": "Ordine",
+    "pay": "Paga",
+    "add": "Aggiungi al carrello",
+    "empty": "Nessun elemento nel tuo carrello",
+    "view": "Visualizza il tuo carrello",
+    "totalPrice": "Total price"
+  },
+
+  "category": {
+    "caps": {
+      "leader": "Completa il tuo look con stile e versatilità.",
+      "description": "I nostri cappelli da baseball premium combinano comfort e durata, perfetti per qualsiasi avventura o uscita informale. Realizzati con materiali di alta qualità, offrono un fit comodo mentre ti tengono fresco e ombreggiato. Disponibili in una varietà di colori e disegni, questi cappelli sono un accessorio must-have per completare il tuo guardaroba. Sia che tu stia giocando a baseball, facendo una passeggiata o semplicemente cercando di fare una dichiarazione di moda, i nostri cappelli da baseball sono la scelta ideale per tenerti stiloso e protetto."
+    },
+    "sweaters": {
+      "leader": "Avvolgiti nel calore e nell'eleganza.",
+      "description": "I nostri maglioni lussuosi sono progettati per tenerti caldo e chic in ogni stagione. Fatti con i materiali più fini, offrono una morbidezza e una durata ineguagliabili, garantendo che tu stia comodo e stiloso. Con una gamma di stili classici e contemporanei, questi maglioni sono perfetti per strati o come pezzo autonomo. Sia che tu stia rilassandoti a casa, andando in ufficio o godendoti una serata fuori, i nostri maglioni sono il mix perfetto di comfort e sofisticazione."
+    }
+  },
+  "categories": {
+    "title": "Categorie"
+  },
+  "products": {
+    "noResults": "No productioniss found"
+  }
+}

@@ -1,3 +1,4 @@
+import LanguageSwitcher from "../LanguageSwitch/LanguageSwitch";
 import styles from "./Header.module.css";
 
 import Logo from "@/components/Logo/Logo";
@@ -16,6 +17,8 @@ const Header = ({ navigation, popover }: HeaderProps) => {
             <div className={styles.headerNavigation}>{navigation}</div>
             <div className={styles.headerPopover}>{popover}</div>
           </div>
+
+          <LanguageSwitcher />
         </div>
       </div>
     </header>

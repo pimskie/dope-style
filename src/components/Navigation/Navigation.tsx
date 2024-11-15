@@ -1,25 +1,29 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+
 import { usePathname } from "next/navigation";
 import { useContext, useState } from "react";
 import { UserContext } from "@/context/user.context";
 import { signOutUser } from "@/utils/firebase/authentication";
 
-import styles from "./Navigation.module.css";
+import { useTranslations } from "next-intl";
 
-const links = [
-  { label: "home", path: "/" },
-  { label: "shop", path: "/shop" },
-];
+import styles from "./Navigation.module.css";
 
 const Navigation = () => {
   const pathname = usePathname();
   const { currentUser } = useContext(UserContext);
+  const t = useTranslations("authentication");
 
   const onSignOutClicked = async () => {
     await signOutUser();
   };
+
+  const links = [
+    { label: "home", path: "/" },
+    { label: "shop", path: "/shop" },
+  ];
 
   return (
     <nav className={styles.navigation}>
@@ -41,11 +45,11 @@ const Navigation = () => {
       <div className="relative flex gap-4">
         {currentUser ? (
           <div className="flex gap-4">
-            <button onClick={onSignOutClicked}>Sign out</button>
+            <button onClick={onSignOutClicked}>{t("signOut")}</button>
           </div>
         ) : (
           <Link href="/sign-in" className="block px-2 py-3">
-            Sign in
+            {t("signIn")}
           </Link>
         )}
       </div>

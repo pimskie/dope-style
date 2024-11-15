@@ -6,6 +6,9 @@ import { redirect } from "next/navigation";
 import { storeUser } from "@/utils/firebase/firebase";
 import { createUserWithCredentials } from "@/utils/firebase/authentication";
 
+// https://next-intl-docs.vercel.app/docs/environments/server-client-components#async-components
+import { getLocale } from "next-intl/server";
+
 import type { ValidationStatus } from "@/types/ValidationStatus";
 
 const requiredFields = ["displayName", "confirmPassword"];
@@ -20,6 +23,8 @@ const errorCodeMessageMap = new Map([
 ]);
 
 const handleRegister = async (previousState: any, formData: FormData) => {
+  const locale = await getLocale();
+
   let redirectPath: string | null = null;
 
   const requiredEntries = Array.from(formData.entries()).filter(([key]) =>
@@ -47,7 +52,7 @@ const handleRegister = async (previousState: any, formData: FormData) => {
       displayName: formData.get("displayName")!.toString(),
     });
 
-    redirectPath = "/sign-in/success";
+    redirectPath = `/${locale}/sign-in/success`;
 
     return <ValidationStatus>{
       status: "ok",

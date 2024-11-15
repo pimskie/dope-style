@@ -3,7 +3,7 @@
 import React, { ReactNode } from "react";
 
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 import { ucfirst } from "@/utils/string/ucfirst";
 
