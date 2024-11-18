@@ -1,10 +1,12 @@
 import {
   collection,
   getDocs,
+  limit,
   query,
   QuerySnapshot,
   where,
 } from "firebase/firestore";
+
 import { database } from "@/utils/firebase/firebase";
 
 import type { Product, ProductDocument } from "@/types/Product";
@@ -49,6 +51,7 @@ const product = {
 
   where: async (whereParams: QueryWhere[]) => {
     const productsCollection = collection(database, "products");
+
     const whereClauses = whereParams.map((whereParam) =>
       where(whereParam.field, whereParam.operator, whereParam.value)
     );
